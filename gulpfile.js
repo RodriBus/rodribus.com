@@ -2,7 +2,9 @@
 
 const del = require('del');
 const gulp = require('gulp');
+const rename = require('gulp-rename');
 const pug = require('gulp-pug');
+const pugI18n = require('gulp-i18n-pug');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
@@ -15,6 +17,15 @@ const fs = require('fs');
 
 const cfg = yaml.safeLoad(fs.readFileSync('./config.yaml', 'utf8'));
 
+const pugI18nOptions = {
+  i18n: {
+    dest: cfg.dist.root,
+    locales: cfg.watch.src.locales
+  },
+  verbose: true,
+  pretty: true
+};
+
 gulp.task('clean', () => {
   return del.sync(cfg.dist.root);
 });
@@ -24,11 +35,13 @@ gulp.task('icon', () => {
     .pipe(gulp.dest(cfg.dist.root));
 });
 
-gulp.task('html', () => {
+gulp.task('html', function () {
   return gulp.src(cfg.watch.src.pug)
-    .pipe(pug({
-      verbose: true,
-      pretty: true
+    .pipe(pugI18n(pugI18nOptions))
+    .pipe(rename(path => {
+      if (path.dirname == cfg.defaultLocale) {
+        path.dirname = '';
+      }
     }))
     .pipe(gulp.dest(cfg.dist.root));
 });
@@ -38,8 +51,10 @@ gulp.task('js', () => {
     .pipe(sourcemaps.init())
     .pipe(concat(`${cfg.bundleName}.min.js`))
     .pipe(uglify({
-        mangle: {toplevel: true}
-      }))
+      mangle: {
+        toplevel: true
+      }
+    }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(cfg.dist.js));
 });
@@ -69,7 +84,7 @@ gulp.task('server', ['build'], () => {
     }
   });
 
-  gulp.watch(cfg.watch.src.pugAll, ['html']);
+  gulp.watch([cfg.watch.src.pugAll, cfg.watch.src.locales], ['html']);
   gulp.watch(cfg.watch.src.scssAll, ['css']);
   gulp.watch(cfg.watch.src.js, ['js']);
   gulp.watch(cfg.watch.src.img, ['img']);

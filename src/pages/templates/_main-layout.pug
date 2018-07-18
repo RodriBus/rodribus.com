@@ -4,17 +4,17 @@ doctype html
 html
   head
     meta(charset="UTF-8")
-    meta(name="author", content="Diego Rodríguez Suárez-Bustillo (http://rodribus.com)")
-    meta(name="description", content="Web personal de Diego Rodríguez Suárez-Bustillo")
+    meta(name="author", content=$i18n.meta.author)
+    meta(name="description", content=$i18n.meta.description)
     meta(name="viewport", content="width=device-width, initial-scale=1, user-scalable=0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
 
     block head.title
       - var title = ""
     if title
-      title #{title} | Diego Rodríguez Suárez-Bustillo
+      title #{title} | #{$i18n.common.fullname}
     else
-      title Diego Rodríguez Suárez-Bustillo
+      title #{$i18n.common.fullname}
 
     block styles
       link(rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")

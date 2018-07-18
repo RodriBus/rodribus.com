@@ -1,4 +1,5 @@
 bundleName: bundle
+defaultLocale: en
 
 src:
   root: ./src
@@ -13,6 +14,7 @@ watch:
   src:
     pug: ./src/pages/[^_]*.pug
     pugAll: ./src/pages/**/*.pug
+    locales: ./src/locales/*.yaml
     scss: ./src/scss/main.scss
     scssAll: ./src/scss/**/*.scss
     js: ./src/js/**/*.js

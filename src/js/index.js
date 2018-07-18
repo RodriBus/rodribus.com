@@ -9,9 +9,9 @@ $(function () {
 
   $(".submenu a.scroll").click(function (event) {
     event.preventDefault();
-    var t = $(this).text()
+    var t = $(this).attr('href')
     $('html, body').animate({
-      scrollTop: $("#" + t).offset().top - 100
+      scrollTop: $(t).offset().top - 100
     }, 1000);
   });
 });

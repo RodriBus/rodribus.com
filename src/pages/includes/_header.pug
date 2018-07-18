@@ -2,43 +2,15 @@ header.dark.header
   .container
     #bio.row
       .col-md-2.hidden-sm.hidden-xs.text-center
-        a(href='/', title='Diego Rodríguez Suárez-Bustillo')
+        a(href='/', title=$i18n.common.fullname)
           .biopic
       .col-md-10.hidden-sm.hidden-xs.text-left.val-mid
-        p.main-desc
-          strong Diego Rodríguez Suárez-Bustillo
-          |, técnico superior en desarrollo de aplicaciones web.
-          br
-          |Motivado para afrontar retos e interesado en
-          strong  participar
-          |  en proyectos innovadores.
-          br
-          |Trabajo con códigos limpios y reutilizables, meticuloso desarrollando con
-          strong  calidad
-          | .
-          br
-          |Mi trabajo me
-          strong  representa
-          |  como profesional.
+        p.main-desc !{$i18n.common.bio}
       .col-sm-12.col-xs-12.hidden-lg.hidden-md.text-center
-        a(href='/', title='Diego Rodríguez Suárez-Bustillo')
+        a(href='/', title=$i18n.common.fullname)
           .biopic
       .col-sm-12.col-xs-12.hidden-lg.hidden-md
-        p
-          strong Diego Rodríguez Suárez-Bustillo
-          |, técnico superior en desarrollo de aplicaciones web.
-          br
-          |Motivado para afrontar retos e interesado en
-          strong  participar
-          |  en proyectos innovadores.
-          br
-          |Trabajo con códigos limpios y reutilizables, meticuloso desarrollando con
-          strong  calidad
-          | .
-          br
-          |Mi trabajo me
-          strong  representa
-          |  como profesional.
+        p !{$i18n.common.bio}
 .dark
   nav.navbar
     #sticky-menu.dark.contanier
@@ -46,13 +18,13 @@ header.dark.header
         .navbar-header
           .i-block
             .minified-links.hidden-md.hidden-lg
-              a(href='https://github.com/RodriBus', target='_blank')
+              a(href='https://github.com/RodriBus', target='_blank', title=$i18n.landing.links.github)
                 |
                 i.fa.fa-github-square.fa-3x
-              a(href='https://www.linkedin.com/in/rodribus', target='_blank')
+              a(href='https://www.linkedin.com/in/rodribus', target='_blank', title=$i18n.landing.links.linkedin)
                 |
                 i.fa.fa-linkedin-square.fa-3x
-              a.mail-link(href='nolink', target='_blank')
+              a.mail-link(href='nolink', target='_blank', title=$i18n.landing.links.email)
                 |
                 i.fa.fa-envelope-square.fa-3x
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#main-nav', aria-expanded='false')
@@ -61,17 +33,17 @@ header.dark.header
         nav#main-nav.collapse.navbar-collapse
           ul.navbar-left.links.hidden-sm.hidden-xs
             .text-center
-              a(href='https://github.com/RodriBus', target='_blank', title='Perfil en GitHub')
+              a(href='https://github.com/RodriBus', target='_blank', title=$i18n.landing.links.github)
                 i.fa.fa-github-square.fa-3x
-              a(href='https://www.linkedin.com/in/rodribus', target='_blank', title='Perfil en LinkedIn')
+              a(href='https://www.linkedin.com/in/rodribus', target='_blank', title=$i18n.landing.links.linkedin)
                 i.fa.fa-linkedin-square.fa-3x
-              a.mail-link(href='nolink', target='_blank', title='Email')
+              a.mail-link(href='nolink', target='_blank', title=$i18n.landing.links.email)
                 i.fa.fa-envelope-square.fa-3x
           ul.nav.navbar-nav.navbar-right
             li(class=currentPage == "" ? "active" : "")
-              a(href='/')
+              a(href='./')
                 i.fa.fa-home.fa-lg
             li(class=currentPage == "cv" ? "active" : "")
-              a(href='/cv.html') Curriculum
+              a(href='./cv.html') #{$i18n.cv.title}
             li(class=currentPage == "portfolio" ? "active" : "")
-              a(href='/portfolio.html') Portfolio
+              a(href='./portfolio.html') #{$i18n.portfolio.title}
