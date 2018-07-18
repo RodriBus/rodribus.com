@@ -1,0 +1,45 @@
+@import '_mixins';
+@import '_colors';
+@import '_helpers';
+@import '_fixers';
+@import '_buttons';
+@import '_landing';
+@import '_nav';
+@import '_bio';
+@import '_cv';
+@import '_portfolio';
+@import '_footer';
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+
+
+
+body {
+    color: $black;
+    background-color: $white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+    padding-bottom: 100px;
+}
+
+a,
+a:active,
+a:link {
+    color: $blue;
+    &:hover,
+    &:active {
+        color: $purple;
+    }
+}
+
+header {
+    font-size: 18px;
+}
+
+.dark {
+    background-color: $black;
+    color: $white;
+}
+

@@ -1,0 +1,138 @@
+extends templates/_main-layout.pug
+
+block append variables
+  - var currentPage = "portfolio"
+
+block append head.title
+  - var title = "Portfolio"
+
+block content
+  main
+    .bg-white
+      .container
+        .row.text-center
+          h1.section-title
+            .i-block
+              | Portfolio
+              i.line
+    section
+      .container
+        .col-md-6.col-md-offset-3
+          h2.text-center
+            .i-block
+              | 2015
+              i.line
+          article
+            h3
+              .i-block
+                | Is This Game Fun
+                i.line-left
+            .cover
+              a(href='https://rodribus.github.io/ProjectMagi/')
+                img.img-responsive(src='https://raw.githubusercontent.com/RodriBus/ProjectMagi/master/src/images/banner--magi.png', alt='Ilustración de proyecto Is This Game Fun?')
+            .portfolio-desc
+              h4 Project Magi
+              p
+                | Un intento de transformar mi curriculum en un menú de RPG hecho con react.
+              div
+                span.label.label-default.label-spaced React
+                span.label.label-default.label-spaced ES2015
+                span.label.label-default.label-spaced SASS
+                span.label.label-default.label-spaced Webpack
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='https://rodribus.github.io/ProjectMagi/', target='_blank', data-toggle='tooltip', data-placement='bottom', title='Visitar el proyecto')
+                i.fa.fa-external-link-square.fa-lg
+                |  Visitar
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/ProjectMagi', target='_blank', data-toggle='tooltip', data-placement='bottom', title='Ver código fuente')
+                i.fa.fa-github.fa-lg
+                |  Ver en GitHub
+          article
+            h3
+              .i-block
+                | Is This Game Fun
+                i.line-left
+            .cover
+              a(href='http://isthisgamefun.esy.es/isthisgamefun/')
+                img.img-responsive(src='./assets/images/portfolio/itgf-portfolio-cover-min.png', alt='Ilustración de proyecto Is This Game Fun?')
+            .portfolio-desc
+              h4 Proyecto de fin de ciclo
+              p
+                | Web de puntuación de videojuegos. Desarrollada en un total de más de 120 horas entre 3 personas.
+                br
+                strong Nota
+                | : 10-MH
+              div
+                span.label.label-default.label-spaced PHP
+                span.label.label-default.label-spaced jQuery
+                span.label.label-default.label-spaced Bootstrap
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='http://isthisgamefun.esy.es/isthisgamefun/', target='_blank', data-toggle='tooltip', data-placement='bottom', title='Visitar el proyecto')
+                i.fa.fa-external-link-square.fa-lg
+                |  Visitar
+              a.btn.btn-default.btn-source(href='http://rodribus.github.io/IsThisGameFun/', target='_blank', data-toggle='tooltip', data-placement='bottom', title='Documentación entregada con el proyecto')
+                i.fa.fa-briefcase.fa-lg
+                |  Ver Documento
+              a.btn.btn-default.btn-source(href='http://rodribus.github.io/IsThisGameFun/presentacion/', data-toggle='tooltip', data-placement='bottom', target='_blank', title='Diapositivas utilizadas para la defensa')
+                i.fa.fa-desktop.fa-lg
+                |  Ver Slides
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/IsThisGameFun', target='_blank', data-toggle='tooltip', data-placement='bottom', title='Ver código fuente')
+                i.fa.fa-github.fa-lg
+                |  Ver en GitHub
+          h2.text-center
+            .i-block
+              | 2014
+              i.line
+          article
+            h3
+              .i-block
+                | Ecuestria
+                i.line-left
+            .cover
+              a(href='http://rodribus.github.io/portfolio/hipica')
+                img.img-responsive(src='./assets/images/portfolio/ecuestria-portfolio-cover-min.png', alt='Ilustración de proyecto Ecuestria')
+            .portfolio-desc
+              h4 Escuela de hípica
+              p
+                | Trabajo de diseño de interfaces dividido en 3 fases: Diseño, usabilidad y accesibilidad.
+                | El objetivo fue ir mejorando el diseño original conforme a estandares de usabilidad y accesibilidad nivel AA.
+                br
+                strong Nota
+                | : 9
+              div
+                span.label.label-default.label-spaced HTML
+                span.label.label-default.label-spaced CSS
+                span.label.label-default.label-spaced JavaScript
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='http://rodribus.github.io/portfolio/hipica', target='_blank', data-toggle='tooltip', data-placement='bottom', title='Visitar el proyecto')
+                i.fa.fa-external-link-square.fa-lg
+                |  Visitar
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/Hipica', target='_blank', data-toggle='tooltip', data-placement='bottom', title='Ver código fuente')
+                i.fa.fa-github.fa-lg
+                |  Ver en GitHub
+          article
+            h3
+              .i-block
+                | Felicitación navideña
+                i.line-left
+            .cover
+              a(href='http://rodribus.github.io/portfolio/navidad')
+                img.img-responsive(src='./assets/images/portfolio/navidad-portfolio-cover-min.png', alt='Ilustración de proyecto Felicitación navideña')
+            .portfolio-desc
+              h4 Concurso de navidad IES Ciudad Escolar
+              p
+                | Animacion navideña para el concurso celebrado para elegir una felicitación que enviar a empresas y mostrar en la web del centro.
+                br
+                strong Nota
+                | : 10
+              div
+                span.label.label-default.label-spaced HTML
+                span.label.label-default.label-spaced CSS
+                span.label.label-default.label-spaced JavaScript
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='http://rodribus.github.io/portfolio/navidad', target='_blank', data-toggle='tooltip', data-placement='bottom', title='Visitar el proyecto')
+                i.fa.fa-external-link-square.fa-lg
+                |  Visitar
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/rodribus.github.io/tree/master/portfolio/navidad', target='_blank', data-toggle='tooltip', data-placement='bottom', title='Ver código fuente')
+                i.fa.fa-github.fa-lg
+                |  Ver en GitHub
+

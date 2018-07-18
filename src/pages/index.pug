@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title RodriBus.com
-  body
-    h1 Hello!
-    script(src="./bundle.js")
+extends templates/_landing-layout.pug
+
+block append head.title
+  - var title = ""
+
+block content
+  main.home
+    .bg-white
+      .container
+        .row.text-center
+          .jumbotron.rounded
+            h1.section-title(style='margin-bottom: 0')
+              .i-block
+                | Diego Rodríguez
+                i.line
+            h2(style='margin: 0')
+              .i-block
+                | Web Developer
+            h3.section-title.color-gray.submenu
+              div
+                a(href='./cv.html', data-toggle='tooltip', data-placement='bottom', title='Datos de interés') Curriculum
+                span.hidden-xs ·
+                a(href='./portfolio.html', data-toggle='tooltip', data-placement='bottom', title='Trabajos realizados') Portfolio
+            .text-center
+              a(href='https://github.com/RodriBus', target='_blank', title='Perfil en GitHub')
+                i.fa.fa-github-square.fa-3x
+              a(href='https://www.linkedin.com/in/rodribus', target='_blank', title='Perfil en LinkedIn')
+                i.fa.fa-linkedin-square.fa-3x
+              a.mail-link(href='nolink', target='_blank', title='Email')
+                i.fa.fa-envelope-square.fa-3x

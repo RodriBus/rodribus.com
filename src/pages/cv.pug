@@ -1,0 +1,181 @@
+extends templates/_main-layout.pug
+
+block append variables
+  - var currentPage = "cv"
+
+block append head.title
+  - var title = "Portfolio"
+
+block content
+  main
+      .bg-white
+        .container
+          .row.text-center
+            h1.section-title
+              .i-block
+                | Curriculum Vitae
+                i.line
+            h2.section-title.color-gray.submenu
+              div
+                a.scroll(href='#Formación', title='') Formación
+                span.hidden-xs ·
+                a.scroll(href='#Aptitudes', title='') Aptitudes
+                span.hidden-xs ·
+                a.scroll(href='#Experiencia', title='') Experiencia
+      .bg-white
+        .container
+          article.row
+            h3.section-title.text-center(id='Formación')
+              .i-block
+                | Formación
+                i.line
+            .row.formation
+              .col-md-1.col-md-offset-3.col-sm-2.col-xs-2.text-right
+                span.label.label-default 2013-2015
+              .col-md-5.col-sm-9.col-xs-9
+                .formation-title.i-block
+                  p
+                    strong Ciclo Superior en Desarrollo de Aplicaciones Web
+                    br
+                    |                                 I.E.S. Ciudad Escolar,
+                    span.small Ctra. Colmenar Viejo, Km. 12,800 - 28049, Madrid
+                    br
+                    |                                 Nota final:
+                    strong 9,75-MH
+                .text-center.i-block.val-top
+                  span.fa.fa-trophy.fa-3x.pull-left(data-toggle='tooltip', data-placement='bottom', title='¡Mención de Honor!')
+            .row.formation
+              .col-md-1.col-md-offset-3.col-sm-2.col-xs-2.text-right
+                span.label.label-default 2010-2012
+              .col-md-5.col-sm-9.col-xs-9
+                .formation-title
+                  p
+                    strong Ciclo Superior en Salud Ambiental
+                    br
+                    |                                 I.E.S. San Fernando,
+                    span.small Ctra. Colmenar Viejo, Km. 13,500 - 28049, Madrid
+                    br
+                    |                                 Prácticas en Canal Isabel II.
+      .bg-white
+        .container
+          article.row.text-center
+            h3#Aptitudes.section-title
+              .i-block
+                | Conocimientos y aptitudes
+                i.line
+            .row.text-left
+              .col-md-6
+                .bar-container
+                  .bar-fill(style='width: 79%')
+                    | .Net Framework
+                .bar-container
+                  .bar-fill(style='width: 92%')
+                    | .Net Core
+                .bar-container
+                  .bar-fill(style='width: 70%')
+                    | SDL Tridion
+                .bar-container
+                  .bar-fill(style='width: 75%')
+                    | JavaScript
+                .bar-container
+                  .bar-fill(style='width: 40%')
+                    | Vue.js
+                .bar-container
+                  .bar-fill(style='width: 44%')
+                    | React
+                .bar-container
+                  .bar-fill(style='width: 58%')
+                    | AngularJS
+                .bar-container
+                  .bar-fill(style='width: 58%')
+                    | AngularJS
+              .col-md-6
+                .media.skill
+                  .media-left
+                    span.fa-stack.pic.color-blue.pull-left
+                      i.fa.fa-square.fa-stack-2x
+                      i.fa.fa-suitcase.fa-stack-1x.fa-inverse.color-white
+                  .media-body.cap
+                    strong Profesional
+                    br
+                    | Actitud, dedicación y empeño en la consecución de los objetivos marcados.
+                .media.skill
+                  .media-left
+                    span.fa-stack.pic.color-blue.pull-left
+                      i.fa.fa-square.fa-stack-2x
+                      i.fa.fa-heart.fa-stack-1x.fa-inverse.color-white
+                  .media-body.cap
+                    strong Apasionado
+                    br
+                    | Cuando te encanta tu trabajo todo lo demás viene solo.
+                .media.skill
+                  .media-left
+                    span.fa-stack.pic.color-blue.pull-left
+                      i.fa.fa-square.fa-stack-2x
+                      i.fa.fa-magic.fa-stack-1x.fa-inverse.color-white
+                  .media-body.cap
+                    strong Resolución de problemas
+                    br
+                    | Busco la solución óptima utilizando los recursos y conocimientos a mi alcance.
+                .media.skill
+                  .media-left
+                    span.fa-stack.pic.color-blue.pull-left
+                      i.fa.fa-square.fa-stack-2x
+                      i.fa.fa-archive.fa-stack-1x.fa-inverse.color-white
+                  .media-body.cap
+                    strong Organizado
+                    br
+                    | Un lugar para cada cosa y cada cosa en su lugar.
+      article.container.text-center
+        h4
+          .i-block.voffset4
+            | Otros conocimientos
+            i.line
+        span.tag Gulp
+        span.tag Webpack
+        span.tag Node.js
+        span.tag Jenkins
+        span.tag MVC
+        span.tag MS SQL Server
+        span.tag Entity Framework
+        span.tag Photoshop
+      .bg-white
+        .container
+          article.row
+            .text-center
+              h3#Experiencia.section-title
+                .i-block
+                  | Experiencia
+                  i.line
+              .row.text-left
+                .col-md-1.col-md-offset-3.col-sm-2.col-xs-2
+                  span.label.label-default(style='margin-left: 50%') 2015-2018
+                .col-md-5.col-sm-10.col-xs-10
+                  .i-block
+                    p
+                      span.big
+                        strong Fecron Consulting Services
+                      br
+                      span.small Ronda de poniente 8, Tres Cantos, 28760, Madrid
+                      br
+                      span.big Analista programador
+                      br
+                      |                                     Analista programador centrado en proyectos de innovación y calidad de importantes clientes.
+                      br
+                      |                                     Destacado por mis compañeros y supervisores como referente en soluciones, metodologías y conocimientos.
+              .row.text-left
+                .col-md-1.col-md-offset-3.col-sm-2.col-xs-2
+                  span.label.label-default(style='margin-left: 50%') 2015
+                .col-md-5.col-sm-10.col-xs-10
+                  .i-block
+                    p
+                      span.big
+                        strong Deloitte España
+                      br
+                      span.small Torre Picasso, Plaza Pablo Ruíz Picasso 1, 28020, Madrid
+                      br
+                      span.big Becario - Programador
+                      br
+                      |                                     Prácticas de ciclo en el departamento interno de desarrollo.
+                      br
+                      |                                     En la valoración final el responsable de mi formación destacó mí profesionalidad, responsabilidad, madurez y una capacidad de aprendizaje dignas de mención.

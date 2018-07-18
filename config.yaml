@@ -1,0 +1,21 @@
+bundleName: bundle
+
+src:
+  root: ./src
+
+dist:
+  root: ./dist
+  css: ./dist/css
+  js: ./dist/js
+
+watch:
+  dist:
+    html: ./dist/*.html
+    css: ./dist/*.css
+    js: ./dist/*.js
+  src:
+    pug: ./src/pages/[^_]*.pug
+    pugAll: ./src/pages/**/*.pug
+    scss: ./src/scss/main.scss
+    scssAll: ./src/scss/**/*.scss
+    js: ./src/js/*.js
