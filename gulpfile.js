@@ -37,7 +37,9 @@ gulp.task('js', () => {
   return gulp.src(cfg.watch.src.js)
     .pipe(sourcemaps.init())
     .pipe(concat(`${cfg.bundleName}.min.js`))
-    .pipe(uglify())
+    .pipe(uglify({
+        mangle: {toplevel: true}
+      }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(cfg.dist.js));
 });
