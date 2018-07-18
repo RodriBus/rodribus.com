@@ -2,7 +2,7 @@
     width: $biopic-size;
     height: $biopic-size;
     @include border-radius($biopic-size/2);
-    background: url(../../images/biopic.jpg) no-repeat top;
+    background: url(/img/biopic.jpg) no-repeat top;
     background-size: 100%;
     /*display: inline-block;*/
     box-shadow: 0px 0px 0px $biopic-gap $biopick-gap-color, 0px 0px 0px $biopic-gap+$biopic-border-size $biopic-border-color;
