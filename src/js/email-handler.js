@@ -17,7 +17,7 @@ function setEmailHover() {
     },
     function () {
       //Out
-      $(this).attr('href', 'nolink');
+      $(this).removeAttr('href');
     }
   );
 }
