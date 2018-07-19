@@ -7,7 +7,7 @@ landing:
   title: Web Developer
   links:
     cv:
-      text: Curriculum
+      text: Currículum
       title: Datos de interés
     portfolio:
       text: Portfolio
@@ -26,7 +26,7 @@ common:
        Mi trabajo me <strong>representa</strong> como profesional.
   score: Nota
 cv:
-  title: Curriculum vitae
+  title: Currículum
 
   sections:
     education:
@@ -101,7 +101,7 @@ portfolio:
       title: Project Magi
       subtitle: Menú RPG como CV
       alt: Ilustración de proyecto Magi
-      description: Un intento de transformar mi curriculum en un menú de RPG hecho con react.
+      description: Un intento de transformar mi currículum en un menú de RPG hecho con react.
 
     itgf:
       title: Is This Game Fun?

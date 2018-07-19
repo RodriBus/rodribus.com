@@ -7,7 +7,7 @@ landing:
   title: Web Developer
   links:
     cv:
-      text: Résumé
+      text: Resume
       title: Professional and academical information
     portfolio:
       text: Portfolio
@@ -26,7 +26,7 @@ common:
        My work <strong>represents</strong> me as a professional.
   score: Grade
 cv:
-  title: Curriculum vitae
+  title: Resume
 
   sections:
     education:
@@ -99,9 +99,9 @@ portfolio:
   porjects:
     magi:
       title: Project Magi
-      subtitle: RPG-menu-like résumé
+      subtitle: RPG-menu-like resume
       alt: Project Magi's illustration
-      description: See my webpage transformed into a RPG-menu-like résumé using react.
+      description: See my webpage transformed into a RPG-menu-like resume using react.
 
     itgf:
       title: Is This Game Fun?
