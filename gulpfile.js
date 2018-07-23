@@ -11,6 +11,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
+const sitemap = require('gulp-sitemap');
 const browserSync = require('browser-sync').create();
 const yaml = require('js-yaml');
 const fs = require('fs');
@@ -25,6 +26,16 @@ const pugI18nOptions = {
   verbose: true,
   pretty: true
 };
+
+gulp.task('sitemap', ['html'], () => {
+  return gulp.src(cfg.watch.dist.html, {
+      read: false
+    })
+    .pipe(sitemap({
+      siteUrl: 'http://rodribus.com'
+    }))
+    .pipe(gulp.dest(cfg.dist.root));
+});
 
 gulp.task('clean', () => {
   return del.sync(cfg.dist.root);
@@ -92,5 +103,5 @@ gulp.task('server', ['build'], () => {
   gulp.watch([cfg.watch.dist.html, cfg.watch.dist.js]).on('change', browserSync.reload);
 });
 
-gulp.task('build', ['clean', 'icon', 'html', 'js', 'css', 'img']);
+gulp.task('build', ['clean', 'icon', 'html', 'sitemap', 'js', 'css', 'img']);
 gulp.task('default', ['build']);

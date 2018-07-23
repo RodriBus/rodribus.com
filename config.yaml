@@ -1,5 +1,5 @@
 bundleName: bundle
-defaultLocale: en
+defaultLocale: es
 
 src:
   root: ./src
