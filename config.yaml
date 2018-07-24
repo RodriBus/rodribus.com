@@ -1,0 +1,26 @@
+bundleName: bundle
+defaultLocale: es
+
+src:
+  root: ./src
+
+dist:
+  root: ./dist
+  css: ./dist/css
+  js: ./dist/js
+  img: ./dist/img
+
+watch:
+  src:
+    pug: ./src/pages/[^_]*.pug
+    pugAll: ./src/pages/**/*.pug
+    locales: ./src/locales/*.yaml
+    scss: ./src/scss/main.scss
+    scssAll: ./src/scss/**/*.scss
+    js: ./src/js/**/*.js
+    img: ./src/img/**/*.+(png|jpg)
+  dist:
+    html: ./dist/**/*.html
+    css: ./dist/css/**/*.css
+    js: ./dist/js/**/*.js
+    img: ./dist/img/**/*.+(png|jpg)

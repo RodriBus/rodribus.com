@@ -1,0 +1,60 @@
+- var translatedPath = ""
+if $localeName == "es"
+  - translatedPath = translatedPath + "/en"
+if currentPage == "cv"
+  - translatedPath = translatedPath + "/cv.html"
+else if currentPage == "portfolio"
+  - translatedPath = translatedPath + "/portfolio.html"
+
+header.dark.header
+  .container
+    #bio.row
+      .col-md-2.hidden-sm.hidden-xs.text-center
+        a(href='/', title=$i18n.common.fullname)
+          .biopic
+      .col-md-10.hidden-sm.hidden-xs.text-left.val-mid
+        p.main-desc !{$i18n.common.bio}
+      .col-sm-12.col-xs-12.hidden-lg.hidden-md.text-center
+        a(href='/', title=$i18n.common.fullname)
+          .biopic
+      .col-sm-12.col-xs-12.hidden-lg.hidden-md
+        p !{$i18n.common.bio}
+.dark
+  nav.navbar
+    #sticky-menu.dark.contanier
+      .container
+        .navbar-header
+          .i-block
+            .minified-links.hidden-md.hidden-lg
+              a(href='https://github.com/RodriBus', target='_blank', title=$i18n.landing.links.github)
+                |
+                i.fa.fa-github-square.fa-3x
+              a(href='https://www.linkedin.com/in/rodribus', target='_blank', title=$i18n.landing.links.linkedin)
+                |
+                i.fa.fa-linkedin-square.fa-3x
+              a.mail-link(target='_blank', title=$i18n.landing.links.email)
+                |
+                i.fa.fa-envelope-square.fa-3x
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#main-nav', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.fa.fa-bars
+        nav#main-nav.collapse.navbar-collapse
+          ul.navbar-left.links.hidden-sm.hidden-xs
+            .text-center
+              a(href='https://github.com/RodriBus', target='_blank', title=$i18n.landing.links.github)
+                i.fa.fa-github-square.fa-3x
+              a(href='https://www.linkedin.com/in/rodribus', target='_blank', title=$i18n.landing.links.linkedin)
+                i.fa.fa-linkedin-square.fa-3x
+              a.mail-link(target='_blank', title=$i18n.landing.links.email)
+                i.fa.fa-envelope-square.fa-3x
+          ul.nav.navbar-nav.navbar-right
+            li(class=currentPage == "" ? "active" : "")
+              a(href='./')
+                i.fa.fa-home.fa-lg
+            li(class=currentPage == "cv" ? "active" : "")
+              a(href='./cv.html') #{$i18n.cv.title}
+            li(class=currentPage == "portfolio" ? "active" : "")
+              a(href='./portfolio.html') #{$i18n.portfolio.title}
+            li
+              a(href=translatedPath title=$i18n.common.langSelector[$localeName], data-toggle='tooltip', data-placement='bottom')
+                i.fa.fa-lg.fa-globe

@@ -1,0 +1,58 @@
+$biopic-size: 150px;
+$biopic-border-color: $blue;
+$biopick-gap-color: $black;
+$biopic-gap: 10px;
+$biopic-border-size: 2px;
+$nav-underline-color: $blue;
+$nav-icon-color: $white;
+$nav-icon-color-hover: $blue;
+$nav-font-size: 14px;
+$nav-font-color: $white;
+$nav-bg-color: transparent;
+$nav-font-color-hover: $white;
+$nav-bg-color-hover: transparent;
+$nav-upper: true;
+.navbar {
+    border: 0;
+    border-radius: 0;
+    z-index: 999;
+    margin-bottom: 0;
+    #main-nav {
+        >ul>li:hover {
+            @include bgcolor($nav-bg-color-hover);
+        }
+        >ul>li>a {
+            color: $nav-font-color;
+            border-bottom: 5px solid $nav-bg-color;
+            transition: 0.25s border;
+            @include upper($nav-upper);
+        }
+        >ul>li>a:hover,
+        >ul>li.active>a {
+            border-bottom: 5px solid $nav-underline-color;
+            @include bgcolor($nav-bg-color-hover)
+        }
+    }
+    .links {
+        margin-left: -15px;
+        margin-bottom: 0;
+        div.text-center {
+            width: $biopic-size + $biopic-gap * 2 + $biopic-border-size * 2;
+            height: 55px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    .minified-links {
+        margin-left: 15px;
+        margin-top: 8px;
+    }
+    .links a,
+    .minified-links a {
+        color: $nav-icon-color;
+        margin: 0 4.5px;
+        &:hover {
+            color: $nav-icon-color-hover;
+        }
+    }
+}

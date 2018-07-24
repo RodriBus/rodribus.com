@@ -1,0 +1,36 @@
+extends templates/_landing-layout.pug
+
+block append head.title
+  - var title = ""
+
+block content
+  - var translatedPath = "/"
+  if $localeName == "es"
+    - translatedPath = "/en"
+  main.home
+    .bg-white
+      .container
+        .row.text-center
+          .jumbotron.rounded
+            h1.section-title(style='margin-bottom: 0')
+              .i-block
+                | #{$i18n.landing.name}
+                i.line
+            h2(style='margin: 0')
+              .i-block
+                | #{$i18n.landing.title}
+            h3.section-title.color-gray.submenu
+              div
+                a(href='./cv.html', data-toggle='tooltip', data-placement='bottom', title=$i18n.landing.links.cv.title) #{$i18n.landing.links.cv.text}
+                span.hidden-xs ·
+                a(href='./portfolio.html', data-toggle='tooltip', data-placement='bottom', title=$i18n.landing.links.portfolio.title) #{$i18n.landing.links.portfolio.text}
+            .text-center
+              a(href='https://github.com/RodriBus', target='_blank', title=$i18n.landing.links.github)
+                i.fa.fa-github-square.fa-3x
+              a(href='https://www.linkedin.com/in/rodribus', target='_blank', title=$i18n.landing.links.linkedin)
+                i.fa.fa-linkedin-square.fa-3x
+              a.mail-link(target='_blank', title=$i18n.landing.links.email)
+                i.fa.fa-envelope-square.fa-3x
+            .text-center
+              a(href=translatedPath, target='_self', title=$i18n.common.langSelector[$localeName], data-toggle='tooltip', data-placement='bottom')
+                i.fa.fa-globe.fa-2x
