@@ -17,6 +17,8 @@ landing:
     email: Email
 
 common:
+  langSelector:
+    es: Go to english version
   fullname: Diego Rodríguez Suárez-Bustillo
   location: Soto Del Real • Madrid
   bio: >

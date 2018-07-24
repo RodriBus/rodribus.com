@@ -1,3 +1,11 @@
+- var translatedPath = ""
+if $localeName == "es"
+  - translatedPath = translatedPath + "/en"
+if currentPage == "cv"
+  - translatedPath = translatedPath + "/cv.html"
+else if currentPage == "portfolio"
+  - translatedPath = translatedPath + "/portfolio.html"
+
 header.dark.header
   .container
     #bio.row
@@ -47,3 +55,6 @@ header.dark.header
               a(href='./cv.html') #{$i18n.cv.title}
             li(class=currentPage == "portfolio" ? "active" : "")
               a(href='./portfolio.html') #{$i18n.portfolio.title}
+            li
+              a(href=translatedPath title=$i18n.common.langSelector[$localeName], data-toggle='tooltip', data-placement='bottom')
+                i.fa.fa-lg.fa-globe

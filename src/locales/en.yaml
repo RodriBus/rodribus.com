@@ -17,10 +17,12 @@ landing:
     email: Email
 
 common:
+  langSelector:
+    en: Versión en español
   fullname: Diego Rodríguez Suárez-Bustillo
   location: Soto Del Real • Madrid
   bio: >
-       <strong>Diego Rodríguez Suárez-Bustillo</strong>, Certificated on Higher Education in Web Development.<br>
+       <strong>Diego Rodríguez Suárez-Bustillo</strong>, certificated on Higher Education in Web Development.<br>
        Motivated to face challenges and interested in <strong>participating</strong> in innovative projects.<br>
        Working with clean and reusable code, meticulously developing with <strong>quality</strong>. <br>
        My work <strong>represents</strong> me as a professional.

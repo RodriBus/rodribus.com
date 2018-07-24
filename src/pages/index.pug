@@ -4,6 +4,9 @@ block append head.title
   - var title = ""
 
 block content
+  - var translatedPath = "/"
+  if $localeName == "es"
+    - translatedPath = "/en"
   main.home
     .bg-white
       .container
@@ -28,3 +31,6 @@ block content
                 i.fa.fa-linkedin-square.fa-3x
               a.mail-link(target='_blank', title=$i18n.landing.links.email)
                 i.fa.fa-envelope-square.fa-3x
+            .text-center
+              a(href=translatedPath, target='_self', title=$i18n.common.langSelector[$localeName], data-toggle='tooltip', data-placement='bottom')
+                i.fa.fa-globe.fa-2x
