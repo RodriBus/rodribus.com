@@ -32,7 +32,7 @@ gulp.task('sitemap', ['html'], () => {
       read: false
     })
     .pipe(sitemap({
-      siteUrl: 'http://rodribus.com'
+      siteUrl: 'https://rodribus.com'
     }))
     .pipe(gulp.dest(cfg.dist.root));
 });
