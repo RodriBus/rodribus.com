@@ -99,6 +99,18 @@ portfolio:
     slides: Slides used the presentation
 
   porjects:
+    rodribus:
+      title: RodriBus.com
+      subtitle: My personal website
+      alt: RodriBus.com's illustration
+      description: This website. Changed the PHP architecture for compiled files from pug and served as statics.
+
+    demi:
+      title: Demi
+      subtitle: Simple canvas game engine
+      alt: Demi's illustration
+      description: Simple canvas game engine demo using typescript.
+
     magi:
       title: Project Magi
       subtitle: RPG-menu-like resume

@@ -20,6 +20,57 @@ block content
         .col-md-6.col-md-offset-3
           h2.text-center
             .i-block
+              | 2018
+              i.line
+          article
+            h3
+              .i-block
+                | #{$i18n.portfolio.porjects.rodribus.title}
+                i.line-left
+            .cover
+              a(href='http://rodribus.com/')
+                img.img-responsive.pixel-perfect(src='/img/portfolio/rodribus-portfolio-cover-min.png', alt=$i18n.portfolio.porjects.rodribus.title)
+            .portfolio-desc
+              h4 #{$i18n.portfolio.porjects.rodribus.subtitle}
+              p
+                | #{$i18n.portfolio.porjects.rodribus.description}
+              div
+                span.label.label-default.label-spaced Pug
+                span.label.label-default.label-spaced Sass
+                span.label.label-default.label-spaced Gulp
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/rodribus.com', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.github)
+                i.fa.fa-github.fa-lg
+                |  #{$i18n.portfolio.links.github}
+          h2.text-center
+            .i-block
+              | 2017
+              i.line
+          article
+            h3
+              .i-block
+                | #{$i18n.portfolio.porjects.demi.title}
+                i.line-left
+            .cover
+              a(href='http://rodribus.com/')
+                img.img-responsive.pixel-perfect(src='/img/portfolio/demi-portfolio-cover-min.png', alt=$i18n.portfolio.porjects.demi.title)
+            .portfolio-desc
+              h4 #{$i18n.portfolio.porjects.demi.subtitle}
+              p
+                | #{$i18n.portfolio.porjects.demi.description}
+              div
+                span.label.label-default.label-spaced Gulp
+                span.label.label-default.label-spaced Browserify
+                span.label.label-default.label-spaced Typescript
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/demi', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.go)
+                i.fa.fa-external-link-square.fa-lg
+                |  #{$i18n.portfolio.links.go}
+              a.btn.btn-default.btn-source(href='https://rodribus.github.io/demi/', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.github)
+                i.fa.fa-github.fa-lg
+                |  #{$i18n.portfolio.links.github}
+          h2.text-center
+            .i-block
               | 2016
               i.line
           article
@@ -37,7 +88,7 @@ block content
               div
                 span.label.label-default.label-spaced React
                 span.label.label-default.label-spaced ES2015
-                span.label.label-default.label-spaced SASS
+                span.label.label-default.label-spaced Sass
                 span.label.label-default.label-spaced Webpack
             .btn-group(role='group', aria-label='Links')
               a.btn.btn-default.btn-source(href='https://rodribus.github.io/ProjectMagi/', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.go)

@@ -99,6 +99,18 @@ portfolio:
     slides: Diapositivas utilizadas para la defensa
 
   porjects:
+    rodribus:
+      title: RodriBus.com
+      subtitle: Mi web personal
+      alt: Ilustración de proyecto web personal
+      description: Esta web. Cambio de arquitectura en PHP por ficheros compilados con Pug y servido como estáticos.
+
+    demi:
+      title: Demi
+      subtitle: Motor de juego sencillo con canvas
+      alt: Ilustración de proyecto Demi
+      description: Demostración de motor de juego sencillo usando typescript.
+
     magi:
       title: Project Magi
       subtitle: Menú RPG como CV
