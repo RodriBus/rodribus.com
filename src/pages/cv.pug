@@ -1,0 +1,178 @@
+extends templates/_main-layout.pug
+
+block append variables
+  - var currentPage = "cv"
+
+block append head.title
+  - var title = $i18n.cv.title
+
+block content
+  main
+      .bg-white
+        .container
+          .row.text-center
+            h1.section-title
+              .i-block
+                | #{$i18n.cv.title}
+                i.line
+            h2.section-title.color-gray.submenu
+              div
+                a.scroll(href='#'+$i18n.cv.sections.education.anchor, title='') #{$i18n.cv.sections.education.title}
+                span.hidden-xs ·
+                a.scroll(href='#'+$i18n.cv.sections.skills.anchor, title='') #{$i18n.cv.sections.skills.title}
+                span.hidden-xs ·
+                a.scroll(href='#'+$i18n.cv.sections.experience.anchor, title='') #{$i18n.cv.sections.experience.title}
+      .bg-white
+        .container
+          article.row
+            h3.section-title.text-center(id=$i18n.cv.sections.education.anchor)
+              .i-block
+                | #{$i18n.cv.sections.education.title}
+                i.line
+            .row.formation
+              .col-md-1.col-md-offset-3.col-sm-2.col-xs-2.text-right
+                span.label.label-default 2013-2015
+              .col-md-5.col-sm-9.col-xs-9
+                .formation-title.i-block
+                  p
+                    strong #{$i18n.cv.sections.education.daw.title}
+                    br
+                    | #{$i18n.cv.sections.education.daw.location.name},
+                    span.small #{$i18n.cv.sections.education.daw.location.address}
+                    br
+                    | !{$i18n.cv.sections.education.daw.extra}
+                .text-center.i-block.val-top
+                  span.fa.fa-trophy.fa-3x.pull-left(data-toggle='tooltip', data-placement='bottom', title=$i18n.cv.sections.education.daw.honor)
+            .row.formation
+              .col-md-1.col-md-offset-3.col-sm-2.col-xs-2.text-right
+                span.label.label-default 2010-2012
+              .col-md-5.col-sm-9.col-xs-9
+                .formation-title
+                  p
+                    strong #{$i18n.cv.sections.education.sa.title}
+                    br
+                    | #{$i18n.cv.sections.education.sa.location.name},
+                    span.small #{$i18n.cv.sections.education.sa.location.address}
+                    br
+                    | #{$i18n.cv.sections.education.sa.extra}
+      .bg-white
+        .container
+          article.row.text-center
+            h3.section-title(id=$i18n.cv.sections.skills.anchor)
+              .i-block
+                | #{$i18n.cv.sections.skills.name}
+                i.line
+            .row.text-left
+              .col-md-6
+                .bar-container
+                  .bar-fill(style='width: 79%')
+                    | .Net Framework
+                .bar-container
+                  .bar-fill(style='width: 92%')
+                    | .Net Core
+                .bar-container
+                  .bar-fill(style='width: 70%')
+                    | SDL Tridion
+                .bar-container
+                  .bar-fill(style='width: 75%')
+                    | JavaScript
+                .bar-container
+                  .bar-fill(style='width: 68%')
+                    | Node.js
+                .bar-container
+                  .bar-fill(style='width: 40%')
+                    | Vue.js
+                .bar-container
+                  .bar-fill(style='width: 44%')
+                    | React
+                .bar-container
+                  .bar-fill(style='width: 58%')
+                    | AngularJS
+              .col-md-6
+                .media.skill
+                  .media-left
+                    span.fa-stack.pic.color-blue.pull-left
+                      i.fa.fa-square.fa-stack-2x
+                      i.fa.fa-suitcase.fa-stack-1x.fa-inverse.color-white
+                  .media-body.cap
+                    strong #{$i18n.cv.sections.skills.personal.professional.title}
+                    br
+                    | #{$i18n.cv.sections.skills.personal.professional.description}
+                .media.skill
+                  .media-left
+                    span.fa-stack.pic.color-blue.pull-left
+                      i.fa.fa-square.fa-stack-2x
+                      i.fa.fa-heart.fa-stack-1x.fa-inverse.color-white
+                  .media-body.cap
+                    strong #{$i18n.cv.sections.skills.personal.pasionate.title}
+                    br
+                    | #{$i18n.cv.sections.skills.personal.pasionate.description}
+                .media.skill
+                  .media-left
+                    span.fa-stack.pic.color-blue.pull-left
+                      i.fa.fa-square.fa-stack-2x
+                      i.fa.fa-magic.fa-stack-1x.fa-inverse.color-white
+                  .media-body.cap
+                    strong #{$i18n.cv.sections.skills.personal.problemSolver.title}
+                    br
+                    | #{$i18n.cv.sections.skills.personal.problemSolver.description}
+                .media.skill
+                  .media-left
+                    span.fa-stack.pic.color-blue.pull-left
+                      i.fa.fa-square.fa-stack-2x
+                      i.fa.fa-archive.fa-stack-1x.fa-inverse.color-white
+                  .media-body.cap
+                    strong #{$i18n.cv.sections.skills.personal.organized.title}
+                    br
+                    | #{$i18n.cv.sections.skills.personal.organized.description}
+      article.container.text-center
+        h4
+          .i-block.voffset4
+            | #{$i18n.cv.sections.skills.extras}
+            i.line
+        span.tag Sass
+        span.tag Gulp
+        span.tag Webpack
+        span.tag Jenkins
+        span.tag MVC
+        span.tag DXA
+        span.tag MS SQL Server
+        span.tag Entity Framework
+        span.tag EF Core
+        span.tag Photoshop
+      .bg-white
+        .container
+          article.row
+            .text-center
+              h3.section-title(id=$i18n.cv.sections.experience.anchor)
+                .i-block
+                  | #{$i18n.cv.sections.experience.title}
+                  i.line
+              .row.text-left
+                .col-md-1.col-md-offset-3.col-sm-2.col-xs-2.text-right
+                  span.label.label-default 2015-2018
+                .col-md-5.col-sm-10.col-xs-10
+                  .i-block
+                    p
+                      span.big
+                        strong #{$i18n.cv.sections.experience.companies.fecron.name}
+                      br
+                      span.small #{$i18n.cv.sections.experience.companies.fecron.location}
+                      br
+                      span.big #{$i18n.cv.sections.experience.companies.fecron.job}
+                      br
+                      | !{$i18n.cv.sections.experience.companies.fecron.description}
+              .row.text-left
+                .col-md-1.col-md-offset-3.col-sm-2.col-xs-2.text-right
+                  span.label.label-default 2015
+                .col-md-5.col-sm-10.col-xs-10
+                  .i-block
+                    p
+                      span.big
+                        strong #{$i18n.cv.sections.experience.companies.deloitte.name}
+                      br
+                      span.small #{$i18n.cv.sections.experience.companies.deloitte.location}
+                      br
+                      span.big #{$i18n.cv.sections.experience.companies.deloitte.job}
+                      br
+                      | !{$i18n.cv.sections.experience.companies.deloitte.description}

@@ -1,0 +1,36 @@
+# http://EditorConfig.org
+# From https://github.com/RodriBus/conventions
+
+# This file is the top-most EditorConfig file
+root = true
+
+# All Files
+[*]
+charset = utf-8
+end_of_line = crlf
+indent_style = space
+indent_size = 4
+insert_final_newline = false
+trim_trailing_whitespace = true
+
+# JavaScript Files
+[*.{js,ts,jsx}]
+indent_size = 2
+insert_final_newline = true
+
+# Web Files
+[*.{htm,html,css,scss,less}]
+indent_size = 4
+insert_final_newline = false
+
+# Pug Files
+[*.pug]
+indent_size = 2
+
+# Yaml Files
+[*.{yml, yaml}]
+indent_size = 2
+
+# Markdown Files
+[*.md]
+trim_trailing_whitespace = false

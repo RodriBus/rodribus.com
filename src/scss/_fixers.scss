@@ -1,0 +1,15 @@
+/*FIXER*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*Fix the white right space on mobile*/
+
+html,
+body {
+    width: auto !important;
+    overflow-x: hidden !important;
+    background-color: $black;
+}

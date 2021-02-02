@@ -1,0 +1,49 @@
+$black: #2A2D34;
+$white: #EEEEEE;
+$green: #C2F970;
+$purple: #564D80;
+$blue: #98A6D4;
+$gray: transparentize($black, 0.6);
+
+
+
+
+
+/*COLORS*/
+.color-white{
+    color: $white;
+}
+.color-black{
+    color: $black;
+}
+.color-purple{
+    color: $purple;
+}
+.color-blue{
+    color: $blue;
+}
+.color-green{
+    color: $green;
+}
+.color-gray{
+    color: $gray;
+}
+
+.bg-white{
+    @include bgcolor($white);
+}
+.bg-black{
+    @include bgcolor($black);
+}
+.bg-purple{
+    @include bgcolor($purple);
+}
+.bg-blue{
+    @include bgcolor($blue);
+}
+.bg-green{
+    @include bgcolor($green);
+}
+.bg-gray{
+    @include bgcolor($gray);
+}

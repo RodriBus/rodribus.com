@@ -1,0 +1,192 @@
+extends templates/_main-layout.pug
+
+block append variables
+  - var currentPage = "portfolio"
+
+block append head.title
+  - var title = $i18n.portfolio.title
+
+block content
+  main
+    .bg-white
+      .container
+        .row.text-center
+          h1.section-title
+            .i-block
+              | #{$i18n.portfolio.title}
+              i.line
+    section
+      .container
+        .col-md-6.col-md-offset-3
+          h2.text-center
+            .i-block
+              | 2018
+              i.line
+          article
+            h3
+              .i-block
+                | #{$i18n.portfolio.porjects.rodribus.title}
+                i.line-left
+            .cover
+              a(href='http://rodribus.com/')
+                img.img-responsive.pixel-perfect(src='/img/portfolio/rodribus-portfolio-cover-min.png', alt=$i18n.portfolio.porjects.rodribus.title)
+            .portfolio-desc
+              h4 #{$i18n.portfolio.porjects.rodribus.subtitle}
+              p
+                | #{$i18n.portfolio.porjects.rodribus.description}
+              div
+                span.label.label-default.label-spaced Pug
+                span.label.label-default.label-spaced Sass
+                span.label.label-default.label-spaced Gulp
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/rodribus.com', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.github)
+                i.fa.fa-github.fa-lg
+                |  #{$i18n.portfolio.links.github}
+          h2.text-center
+            .i-block
+              | 2017
+              i.line
+          article
+            h3
+              .i-block
+                | #{$i18n.portfolio.porjects.demi.title}
+                i.line-left
+            .cover
+              a(href='https://rodribus.github.io/demi/')
+                img.img-responsive.pixel-perfect(src='/img/portfolio/demi-portfolio-cover-min.png', alt=$i18n.portfolio.porjects.demi.title)
+            .portfolio-desc
+              h4 #{$i18n.portfolio.porjects.demi.subtitle}
+              p
+                | #{$i18n.portfolio.porjects.demi.description}
+              div
+                span.label.label-default.label-spaced Gulp
+                span.label.label-default.label-spaced Browserify
+                span.label.label-default.label-spaced Typescript
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/demi', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.go)
+                i.fa.fa-external-link-square.fa-lg
+                |  #{$i18n.portfolio.links.go}
+              a.btn.btn-default.btn-source(href='https://rodribus.github.io/demi/', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.github)
+                i.fa.fa-github.fa-lg
+                |  #{$i18n.portfolio.links.github}
+          h2.text-center
+            .i-block
+              | 2016
+              i.line
+          article
+            h3
+              .i-block
+                | #{$i18n.portfolio.porjects.magi.title}
+                i.line-left
+            .cover
+              a(href='https://rodribus.github.io/ProjectMagi/')
+                img.img-responsive.pixel-perfect(src='/img/portfolio/projectmagi-portfolio-cover-min.png', alt=$i18n.portfolio.porjects.magi.title)
+            .portfolio-desc
+              h4 #{$i18n.portfolio.porjects.magi.subtitle}
+              p
+                | #{$i18n.portfolio.porjects.magi.description}
+              div
+                span.label.label-default.label-spaced React
+                span.label.label-default.label-spaced ES2015
+                span.label.label-default.label-spaced Sass
+                span.label.label-default.label-spaced Webpack
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='https://rodribus.github.io/ProjectMagi/', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.go)
+                i.fa.fa-external-link-square.fa-lg
+                |  #{$i18n.portfolio.links.go}
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/ProjectMagi', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.github)
+                i.fa.fa-github.fa-lg
+                |  #{$i18n.portfolio.links.github}
+          h2.text-center
+            .i-block
+              | 2015
+              i.line
+          article
+            h3
+              .i-block
+                | #{$i18n.portfolio.porjects.itgf.title}
+                i.line-left
+            .cover
+              a(href='http://isthisgamefun.esy.es/isthisgamefun/')
+                img.img-responsive(src='/img/portfolio/itgf-portfolio-cover-min.png', alt=$i18n.portfolio.porjects.itgf.alt)
+            .portfolio-desc
+              h4 #{$i18n.portfolio.porjects.itgf.subtitle}
+              p
+                | #{$i18n.portfolio.porjects.itgf.description}
+                br
+                strong #{$i18n.common.score}
+                | : #{$i18n.portfolio.porjects.itgf.score}
+              div
+                span.label.label-default.label-spaced PHP
+                span.label.label-default.label-spaced jQuery
+                span.label.label-default.label-spaced Bootstrap
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='http://isthisgamefun.esy.es/isthisgamefun/', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.go)
+                i.fa.fa-external-link-square.fa-lg
+                |  #{$i18n.portfolio.links.go}
+              a.btn.btn-default.btn-source(href='http://rodribus.github.io/IsThisGameFun/', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.docs)
+                i.fa.fa-briefcase.fa-lg
+                |  #{$i18n.portfolio.links.docs}
+              a.btn.btn-default.btn-source(href='http://rodribus.github.io/IsThisGameFun/presentacion/', data-toggle='tooltip', data-placement='bottom', target='_blank', title=$i18n.portfolio.titles.slides)
+                i.fa.fa-desktop.fa-lg
+                |  #{$i18n.portfolio.links.slides}
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/IsThisGameFun', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.github)
+                i.fa.fa-github.fa-lg
+                |  #{$i18n.portfolio.links.github}
+          h2.text-center
+            .i-block
+              | 2014
+              i.line
+          article
+            h3
+              .i-block
+                | #{$i18n.portfolio.porjects.ecuestria.title}
+                i.line-left
+            .cover
+              a(href='http://rodribus.github.io/statics/sites/hipica/')
+                img.img-responsive(src='/img/portfolio/ecuestria-portfolio-cover-min.png', alt=$i18n.portfolio.porjects.ecuestria.alt)
+            .portfolio-desc
+              h4 #{$i18n.portfolio.porjects.ecuestria.subtitle}
+              p
+                | #{$i18n.portfolio.porjects.ecuestria.description}
+                br
+                strong #{$i18n.common.score}
+                | : #{$i18n.portfolio.porjects.itgf.score}
+              div
+                span.label.label-default.label-spaced HTML
+                span.label.label-default.label-spaced CSS
+                span.label.label-default.label-spaced JavaScript
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='http://rodribus.github.io/statics/sites/hipica/', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.go)
+                i.fa.fa-external-link-square.fa-lg
+                |  #{$i18n.portfolio.links.go}
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/Hipica', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.github)
+                i.fa.fa-github.fa-lg
+                |  #{$i18n.portfolio.links.github}
+          article
+            h3
+              .i-block
+                | #{$i18n.portfolio.porjects.christmas.title}
+                i.line-left
+            .cover
+              a(href='http://rodribus.github.io/statics/sites/navidad/')
+                img.img-responsive(src='/img/portfolio/navidad-portfolio-cover-min.png', alt=$i18n.portfolio.porjects.christmas.alt)
+            .portfolio-desc
+              h4 #{$i18n.portfolio.porjects.christmas.subtitle}
+              p
+                | #{$i18n.portfolio.porjects.christmas.description}
+                br
+                strong #{$i18n.common.score}
+                | : #{$i18n.portfolio.porjects.christmas.score}
+              div
+                span.label.label-default.label-spaced HTML
+                span.label.label-default.label-spaced CSS
+                span.label.label-default.label-spaced JavaScript
+            .btn-group(role='group', aria-label='Links')
+              a.btn.btn-default.btn-source(href='http://rodribus.github.io/statics/sites/navidad/', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.go)
+                i.fa.fa-external-link-square.fa-lg
+                |  #{$i18n.portfolio.links.go}
+              a.btn.btn-default.btn-source(href='https://github.com/RodriBus/statics/tree/master/sites/navidad', target='_blank', data-toggle='tooltip', data-placement='bottom', title=$i18n.portfolio.titles.github)
+                i.fa.fa-github.fa-lg
+                |  #{$i18n.portfolio.links.github}
+

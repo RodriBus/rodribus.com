@@ -1,0 +1,139 @@
+meta:
+  author: Diego Rodríguez Suárez-Bustillo (http://rodribus.com)
+  description: Personal webpage of Diego Rodríguez Suárez-Bustillo
+
+landing:
+  name: Diego Rodríguez
+  title: Web Developer
+  links:
+    cv:
+      text: Resume
+      title: Professional and academical information
+    portfolio:
+      text: Portfolio
+      title: Personal works
+    github: Diego at GitHub
+    linkedin: Diego at LinkedIn
+    email: Email
+
+common:
+  langSelector:
+    en: Versión en español
+  fullname: Diego Rodríguez Suárez-Bustillo
+  location: Soto Del Real • Madrid
+  bio: >
+       <strong>Diego Rodríguez Suárez-Bustillo</strong>, certificated on Higher Education in Web Development.<br>
+       Motivated to face challenges and interested in <strong>participating</strong> in innovative projects.<br>
+       Working with clean and reusable code, meticulously developing with <strong>quality</strong>. <br>
+       My work <strong>represents</strong> me as a professional.
+  score: Grade
+cv:
+  title: Resume
+
+  sections:
+    education:
+      title: Education
+      anchor: education
+      daw:
+        title: Higher Education in Web Application Development
+        location:
+          name: I.E.S. Ciudad Escolar
+          address: Colmenar Viejo's Road, Km. 12,800 - 28049, Madrid
+        extra: "Final grade: <strong>9,75-HM</strong>"
+        honor: Honorable Mention!
+      sa:
+        title: Higher Education in Environmental Health
+        location:
+          name: I.E.S. San Fernando
+          address: Colmenar Viejo's Road, Km. 13,500 - 28049, Madrid
+        extra: Internship in Canal Isabel II.
+
+    skills:
+      title: Skills
+      anchor: skills
+      name: Skills and knowledge
+      personal:
+        professional:
+          title: PROFESSIONAL
+          description: Attitude, dedication and commitment to achieving the objectives set.
+        pasionate:
+          title: PASSIONATE
+          description: When you love your job, everything else goes easy.
+        problemSolver:
+          title: TROUBLESHOOTING
+          description: I search for the optimal solution using the resources and knowledge at my disposal.
+        organized:
+          title: ORGANIZED
+          description: Everything in its place.
+
+      extras: Other knowledge
+
+    experience:
+      title: Experience
+      anchor: experience
+      companies:
+        fecron:
+          name: Fecron Consulting Services
+          location: Ronda de poniente 8, Tres Cantos, 28760, Madrid
+          job: Programmer analyst
+          description: Programmer analyst focused on innovation and quality projects for important clients. <br>Highlighted by my colleagues and supervisors as a reference in solutions, methodologies and knowledge.
+
+        deloitte:
+          name: Deloitte Spain
+          location: Torre Picasso, Plaza Pablo Ruíz Picasso 1, 28020, Madrid
+          job: Internship - Programmer
+          description: Internship in IT department. In the final evaluation, the person in charge of my training highlighted my professionalism, responsibility, maturity and a learning capacity worthy of mention.
+
+portfolio:
+  title: PORTFOLIO
+
+  links:
+    go: Visit
+    github: View on GitHub
+    docs: View Documentation
+    slides: View Sildes
+  titles:
+    go: Visit the project
+    github: View source code
+    docs: Project's documentation
+    slides: Slides used the presentation
+
+  porjects:
+    rodribus:
+      title: RodriBus.com
+      subtitle: My personal website
+      alt: RodriBus.com's illustration
+      description: This website. Changed the PHP architecture for compiled files from pug and served as statics.
+
+    demi:
+      title: Demi
+      subtitle: Simple canvas game engine
+      alt: Demi's illustration
+      description: Simple canvas game engine demo using typescript.
+
+    magi:
+      title: Project Magi
+      subtitle: RPG-menu-like resume
+      alt: Project Magi's illustration
+      description: See my webpage transformed into a RPG-menu-like resume using react.
+
+    itgf:
+      title: Is This Game Fun?
+      subtitle: End project for certificate of higher education
+      alt: Is This Game Fun?'s illustration
+      description: Videogame scoring website. Developed in a total of more than 120 hours involving 3 people.
+      score: 10-HM
+
+    ecuestria:
+      title: Ecuestria
+      subtitle: Equestrian school
+      alt: Ecuestria Project's illustration
+      description: "Interface design work divided into 3 phases: Design, usability and accessibility. The objective was to improve the original design according to AA level usability and accessibility standards."
+      score: 9
+
+    christmas:
+      title: Christmas greetings
+      subtitle: IES Ciudad Escolar Christmas Greetings Contest
+      alt: Christmas greetings' illustration
+      description: Christmas animation for the contest held to choose a greeting to send to companies and display on the school's website.
+      score: 10

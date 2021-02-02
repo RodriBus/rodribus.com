@@ -1,0 +1,22 @@
+/*FOOTER*/
+
+.btn-contact {
+    color: $white;
+    background-color: $blue;
+    border-color: darken($blue, 5%);
+    margin-top: 50px;
+    &:hover {
+        color: $white;
+        background-color: $purple;
+        border-color: darken($purple, 5%);
+    }
+}
+
+footer {
+    color: $blue;
+    @include bgcolor($black);
+
+    a {
+        margin: auto 2px;
+    }
+}
