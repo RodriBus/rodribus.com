@@ -1,0 +1,19 @@
+﻿@{ var info = Outputs
+                        .FromPipeline(nameof(RodriBusCom.Pipelines.LoadGeneralInformationEs))
+                        //.SelectMany(group => group.GetChildren())
+                        .Where(model => model.IsContentful<GeneralInformation>())
+                        .Select(model => model.AsContentful<GeneralInformation>())
+                        .First()
+                        ; }
+
+<script>
+    charArr = [ @Html.Raw(string.Join(", ", System.Text.Encoding.ASCII.GetBytes(info.Email).Select(b => b))) ];
+</script>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//cdn.rawgit.com/garand/sticky/master/jquery.sticky.js"></script>
+<script type="text/javascript" src="/assets/js/email-handler.js"></script>
+<script type="text/javascript" src="/assets/js/isOnScreen.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+@*<script type="text/javascript" src="/js/bundle.min.js"></script>*@

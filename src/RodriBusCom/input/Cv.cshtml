@@ -1,0 +1,159 @@
+﻿@{
+    var educations = Outputs
+        .FromPipeline(nameof(RodriBusCom.Pipelines.LoadEducationsEs))
+        .Where(model => model.IsContentful<Education>())
+        .Select(model => model.AsContentful<Education>())
+        .OrderByDescending(model => model.StartDate)
+        ;
+    var aptitudes = Outputs
+        .FromPipeline(nameof(RodriBusCom.Pipelines.LoadAptitudesEs))
+        .Where(model => model.IsContentful<Aptitude>())
+        .Select(model => model.AsContentful<Aptitude>())
+        ;
+    var knowledges = Outputs
+        .FromPipeline(nameof(RodriBusCom.Pipelines.LoadKnowledgesEs))
+        .Where(model => model.IsContentful<Knowledge>())
+        .Select(model => model.AsContentful<Knowledge>())
+        ;
+    var skills = knowledges
+        .Where(k => !k.ShowAsOtherKnowledge)
+        .OrderBy(k => k.Priority).ThenBy(k => k.Title)
+        ;
+    var others = knowledges
+        .Where(k => !k.ShowAsOtherKnowledge)
+        .OrderBy(k => k.Priority).ThenBy(k => k.Title)
+        ;
+    var experiences = Outputs
+        .FromPipeline(nameof(RodriBusCom.Pipelines.LoadExperiencesEs))
+        .Where(model => model.IsContentful<Experience>())
+        .Select(model => model.AsContentful<Experience>())
+        .OrderByDescending(model => model.EndDate)
+        ;
+}
+
+@*@Html.Partial("../_partials/_member-small-card.cshtml", knowledge)*@
+
+<div class="bg-white">
+    <div class="container">
+        <div class="row text-center">
+            <h1 class="section-title">
+                <span class="i-block">CURRÍCULUM<i class="line"></i></span>
+            </h1>
+            <h2 class="section-title color-gray submenu">
+                <span>
+                    <a class="scroll" href="#formación" title="">Formación</a>
+                    <span class="hidden-xs">·</span>
+                    <a class="scroll" href="#aptitudes" title="">Aptitudes</a>
+                    <span class="hidden-xs">·</span>
+                    <a class="scroll" href="#experiencia" title="">Experiencia</a>
+                </span>
+            </h2>
+        </div>
+    </div>
+</div>
+<div class="bg-white">
+    <div class="container">
+        <article class="row">
+            <h3 class="section-title text-center" id="formación">
+                <span class="i-block">Formación<i class="line"></i></span>
+            </h3>
+            @foreach (var education in educations)
+            {
+                var hasEnd = education.EndDate != default;
+                var sameYear = education.StartDate.Year == education.EndDate.Year;
+                var dateRange = sameYear ? education.StartDate.Year.ToString()
+                    : hasEnd
+                    ? education.StartDate.Year + "-" + education.EndDate.Year
+                    : education.StartDate.Year + "- Actualidad";
+
+                <div class="row formation">
+                    <div class="col-md-1 col-md-offset-3 col-sm-2 col-xs-2 text-right"><span class="label label-default">@dateRange</span></div>
+                    <div class="col-md-5 col-sm-9 col-xs-9">
+                        <div class="formation-title i-block">
+                            <p><strong>@education.Title</strong><br>@education.School,<span class="small">@education.SchoolLocation</span><br>@Html.Raw(await education.RenderAdditionalInformationAsync())</p>
+                        </div>
+                        @if (education.HonorableMention)
+                        {
+                            <div class="text-center i-block val-top"><span class="fa fa-trophy fa-3x pull-left" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="¡Mención de Honor!"></span></div>
+                        }
+                    </div>
+                </div>
+            }
+        </article>
+    </div>
+</div>
+<div class="bg-white">
+    <div class="container">
+        <article class="row text-center">
+            <h3 class="section-title" id="aptitudes">
+                <span class="i-block">Conocimientos y aptitudes<i class="line"></i></span>
+            </h3>
+            <div class="row text-left">
+                <div class="col-md-6">
+                    @foreach (var skill in skills)
+                    {
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: @skill.Percentage%">@skill.Title</div>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-6">
+                    @foreach (var apt in aptitudes)
+                    {
+                        <div class="media skill">
+                            <div class="media-left"><span class="fa-stack pic color-blue pull-left"><i class="fa fa-square fa-stack-2x"></i><i class="fa @apt.Icon fa-stack-1x fa-inverse color-white"></i></span></div>
+                            <div class="media-body cap"><strong>@apt.Title</strong><br>@Html.Raw(await apt.RenderDescriptionAsync())</div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+<article class="container text-center">
+    <h4>
+        <div class="i-block voffset4">Otros conocimientos<i class="line"></i></div>
+    </h4>
+    @foreach (var other in others)
+    {
+        <span class="tag">@other.Title</span>
+    }
+</article>
+<div class="bg-white">
+    <div class="container">
+        <article class="row">
+            <div class="text-center">
+                <h3 class="section-title" id="experiencia">
+                    <span class="i-block">Experiencia<i class="line"></i></span>
+                </h3>
+
+                @foreach (var experience in experiences)
+                {
+
+                    var hasEnd = experience.EndDate != default;
+                    var sameYear = experience.StartDate.Year == experience.EndDate.Year;
+                    var dateRange = sameYear ? experience.StartDate.Year.ToString()
+                        : hasEnd
+                        ? experience.StartDate.Year + "-" + experience.EndDate.Year
+                        : experience.StartDate.Year + "- Actualidad";
+                    <div class="row text-left">
+                        <div class="col-md-1 col-md-offset-3 col-sm-2 col-xs-2 text-right"><span class="label label-default">@dateRange</span></div>
+                        <div class="col-md-5 col-sm-10 col-xs-10">
+                            <div class="i-block">
+                                <p>
+                                    <span class="big"><strong>@experience.Company</strong></span>
+                                    <br>
+                                    <span class="small">@experience.Location</span>
+                                    <br>
+                                    <span class="big">@experience.JobTitle</span>
+                                    <br>
+                                    @Html.Raw(await experience.RenderJobDescriptionAsync())
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </article>
+    </div>
+</div>

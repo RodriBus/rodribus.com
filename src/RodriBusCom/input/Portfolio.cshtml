@@ -1,0 +1,76 @@
+﻿@{
+    var portfolios = Outputs
+        .FromPipeline(nameof(RodriBusCom.Pipelines.LoadPortfolioEs))
+        //.SelectMany(group => group.GetChildren())
+        .Where(model => model.IsContentful<Portfolio>())
+        .Select(model => model.AsContentful<Portfolio>())
+        .GroupBy(model => model.Year.Year)
+        .OrderByDescending(group => group.Key)
+;
+    var locales = Outputs
+    .FromPipeline(nameof(RodriBusCom.Pipelines.LoadPortfolioEs))
+    .Select(d => d.Get<string>("Locale"));
+    @foreach (var g in locales)
+    {
+        <script>
+            console.log("@g");
+        </script>
+    }
+
+    var jsons = new List<string>();
+    foreach (var g in Outputs.FromPipeline(nameof(RodriBusCom.Pipelines.LoadPortfolioEs)))
+    {
+        jsons.Add(await g.GetContentStringAsync());
+    }
+
+}
+<script>models = [@Html.Raw(string.Join(",",jsons))]</script>
+
+<div class="bg-white">
+    <div class="container">
+        <div class="row text-center">
+            <h1 class="section-title">
+                <span class="i-block">PORTFOLIO<i class="line"></i></span>
+            </h1>
+        </div>
+    </div>
+</div>
+<section>
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            @foreach (var group in portfolios)
+            {
+                <h2 class="text-center">
+                    <span class="i-block">@group.Key<i class="line"></i></span>
+                </h2>
+                @foreach (var portfolio in group)
+                {
+                    <article>
+                        <h3>
+                            <span class="i-block">@portfolio.Title<i class="line-left"></i></span>
+                        </h3>
+                        <div class="cover"><a href="@portfolio.Link"><img class="img-responsive pixel-perfect" src="@portfolio.Banner.File.Url" alt="@portfolio.Title" /></a></div>
+                        <div class="portfolio-desc">
+                            <h4>@portfolio.Subtitle</h4>
+                            @Html.Raw(await portfolio.RenderDescriptionAsync())
+                            <div>
+                                @foreach (var tag in portfolio.Tags)
+                                {
+                                    <span class="label label-default label-spaced">@tag</span>
+                                }
+                            </div>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="Links">
+                            @foreach (var link in portfolio.Links ?? new IconLink[0])
+                            {
+                                <a class="btn btn-default btn-source" href="@link.Url" target="_blank" data-toggle="tooltip" data-placement="bottom" title="@link.Title">
+                                    <i class="fa fa-lg @link.GetIconClassname()"></i> @link.Title
+                                </a>
+                            }
+                        </div>
+                    </article>
+                }
+            }
+        </div>
+    </div>
+</section>

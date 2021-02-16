@@ -1,0 +1,67 @@
+﻿@{ var info = Outputs
+             .FromPipeline(nameof(RodriBusCom.Pipelines.LoadGeneralInformationEs))
+             //.SelectMany(group => group.GetChildren())
+             .Where(model => model.IsContentful<GeneralInformation>())
+             .Select(model => model.AsContentful<GeneralInformation>())
+             .First()
+             ;
+}
+
+<header class="dark header">
+    <div class="container">
+        <div class="row" id="bio">
+            <div class="col-md-2 hidden-sm hidden-xs text-center">
+                <a href="/" title="title">
+                    <div class="biopic"></div>
+                </a>
+            </div>
+            <div class="col-md-10 hidden-sm hidden-xs text-left val-mid">
+                <p class="main-desc">@Html.Raw(await info.RenderIntroductionAsync())</p>
+            </div>
+            <div class="col-sm-12 col-xs-12 hidden-lg hidden-md text-center">
+                <a href="/" title="title">
+                    <div class="biopic"></div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-xs-12 hidden-lg hidden-md">
+                @Html.Raw(await info.RenderIntroductionAsync())
+            </div>
+        </div>
+    </div>
+</header>
+<div class="dark">
+    <nav class="navbar">
+        <div class="dark contanier" id="sticky-menu">
+            <div class="container">
+                <div class="navbar-header">
+                    <div class="i-block">
+                        <div class="minified-links hidden-md hidden-lg">
+                            <a href="@info.Github" target="_blank" title="Perfil en GitHub"><i class="fa fa-github-square fa-3x"></i></a>
+                            <a href="@info.Linkedin" target="_blank" title="Perfil en LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+                            <a class="mail-link" target="_blank" title="Email"><i class="fa fa-envelope-square fa-3x"></i></a>
+                        </div>
+                    </div>
+                    <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="fa fa-bars"></span>
+                    </button>
+                </div>
+                <nav class="collapse navbar-collapse" id="main-nav">
+                    <ul class="navbar-left links hidden-sm hidden-xs">
+                        <div class="text-center">
+                            <a href="https://github.com/RodriBus" target="_blank" title="Perfil en GitHub"><i class="fa fa-github-square fa-3x"></i></a>
+                            <a href="https://www.linkedin.com/in/rodribus" target="_blank" title="Perfil en LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+                            <a class="mail-link" target="_blank" title="Email"><i class="fa fa-envelope-square fa-3x"></i></a>
+                        </div>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
+                        <li><a href="/cv.html">CURRÍCULUM</a></li>
+                        <li><a href="/portfolio.html">PORTFOLIO</a></li>
+                        <li><a href="" title="title" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-lg fa-globe"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </nav>
+</div>
