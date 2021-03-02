@@ -1,59 +1,55 @@
-@* <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-    <a class="navbar-item" href="https://virginiasanchez.art">
-    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a>
+@{
+    var current = ViewData["CurrentPage"] as Page;
+    var author = ViewData["Author"] as Author;
+    var nav = ViewData["Navigation"] as Navigation;
+    var localizer = ViewData["Localizer"] as IStringLocalizer;
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-    </a>
-    </div>
+    var homeLink = IExecutionContext.Current.GetLink($"{nav.Root.GetLocalizedSlug()}.html");
+    var cvLink = IExecutionContext.Current.GetLink($"{nav.Resume.GetLocalizedSlug()}.html");
+    var portfolioLink = IExecutionContext.Current.GetLink($"{nav.Portfolio.GetLocalizedSlug()}.html");
 
-    <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-    <a class="navbar-item">
-    Home
-    </a>
+    var alternatePage = IExecutionContext.Current.Outputs.FromPipeline(nameof(RodriBusCom.Pipelines.LoadPages))
+        .Select(d => d.AsContentful<Page>())
+        .Last(p => p.Sys.Id == current.Sys.Id && p.Sys.Locale != current.Sys.Locale);
 
-    <a class="navbar-item">
-    Documentation
-    </a>
-
-    <div class="navbar-item has-dropdown is-hoverable">
-    <a class="navbar-link">
-    More
-    </a>
-
-    <div class="navbar-dropdown">
-    <a class="navbar-item">
-    About
-    </a>
-    <a class="navbar-item">
-    Jobs
-    </a>
-    <a class="navbar-item">
-    Contact
-    </a>
-    <hr class="navbar-divider">
-    <a class="navbar-item">
-    Report an issue
-    </a>
+    var alternateLocale = RodriBusCom.Locales.GetAlternate(current.Sys.Locale);
+    var altLangPath = IExecutionContext.Current.GetLink(System.IO.Path.Combine(RodriBusCom.Locales.GetPath(alternateLocale), alternatePage.Slug));
+}
+<nav class="navbar">
+    <div class="dark contanier" id="sticky-menu">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="i-block">
+                    <div class="minified-links hidden-md hidden-lg">
+                        @foreach (var link in author.Contacts)
+                        {
+                            <a href="@link.Url" target="_blank" title="@link.Name"><i class="fa @Html.Raw($"{link.Icon}-square") fa-3x"></i></a>
+                        }
+                        <a class="mail-link" title="Email"><i class="fa fa-envelope-square fa-3x"></i></a>
+                    </div>
+                </div>
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bars"></span>
+                </button>
+            </div>
+            <nav class="collapse navbar-collapse" id="main-nav">
+                <ul class="navbar-left links hidden-sm hidden-xs">
+                    <div class="text-center">
+                        @foreach (var link in author.Contacts)
+                        {
+                            <a href="@link.Url" target="_blank" title="@link.Name"><i class="fa @Html.Raw($"{link.Icon}-square") fa-3x"></i></a>
+                        }
+                        <a class="mail-link" title="Email"><i class="fa fa-envelope-square fa-3x"></i></a>
+                    </div>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@homeLink" title="@localizer.GetString("Home")" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-home fa-lg"></i></a></li>
+                    <li class="details @(current.Sys.Id == nav.Resume.Sys.Id ? "active" : "")"><a href="@cvLink">@nav.Resume.Title.ToUpper()</a></li>
+                    <li class="details @(current.Sys.Id == nav.Portfolio.Sys.Id ? "active" : "")"><a href="@portfolioLink">@nav.Portfolio.Title.ToUpper()</a></li>
+                    <li><a href="@altLangPath" title="@localizer.GetString("Go_To_Alt_Ver")" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-lg fa-globe"></i></a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
-    </div>
-    </div>
-
-    <div class="navbar-end">
-    <div class="navbar-item">
-    <div class="buttons">
-    <a href="https://instagram.com/virginiasanchez.art" class="button is-large is-rounded is-text">
-    <span class="icon is-medium">
-    <i class="fab fa-instagram fa-2x"></i>
-    </span>
-    </a>
-    </div>
-    </div>
-    </div>
-    </div>
-    </nav> *@
+</nav>

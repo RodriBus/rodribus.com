@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Contentful.Statiq;
 using Microsoft.Extensions.Localization;
 using RodriBusCom.Models.Content;
@@ -12,24 +13,25 @@ using Statiq.Razor;
 
 namespace RodriBusCom.Pipelines
 {
-    public class ResumePages : Pipeline
+    public class HomePipeline : Pipeline
     {
-        public const string CvView = "Cv.cshtml";
+        public const string HomeView = "Index.cshtml";
+        public const string HomePage = "index.html";
 
         public IDictionary<string, string> PageSlugs = new Dictionary<string, string>
         {
-            {Locales.Spanish, "cv" },
-            {Locales.English, "resume" },
+            {Locales.Spanish, "/" },
+            {Locales.English, "/" },
         };
 
-        public ResumePages(IStringLocalizer<SharedResource> localizer)
+        public HomePipeline(IStringLocalizer<SharedResource> localizer)
         {
             Dependencies.AddRange(nameof(LoadSiteMetadata), nameof(LoadNavigation), nameof(LoadPages));
 
             ProcessModules = new ModuleList {
                 new ReplaceDocuments(nameof(LoadPages)),
-                new FilterDocuments(Config.FromDocument(doc => doc.AsContentful<Page>().Slug == PageSlugs[doc.GetString(RodriBusKeys.Locale)])),
-                new MergeContent(new ReadFiles(patterns: CvView)),
+                new FilterDocuments(Config.FromDocument(x => x.AsContentful<Page>().Slug == PageSlugs[x.GetString(RodriBusKeys.Locale)])),
+                new MergeContent(new ReadFiles(patterns: HomeView)),
 
                 new ExtractFrontMatter(GetFrontMatterModules()),
                 new RenderRazor()
@@ -48,13 +50,15 @@ namespace RodriBusCom.Pipelines
                             .Select(x => x.AsContentful<Navigation>())
                             .FirstOrDefault();
 
+                        var str = metadata.Author.RenderBioAsync().Result;
+
                         return new HomeViewModel(page, metadata, navigation, localizer, locale);
                     }
                     )),
 
                 new SetDestination(Config.FromDocument(doc  =>
                 {
-                    var path = PageSlugs[doc.GetString(RodriBusKeys.Locale)] + ".html";
+                    var path = HomePage;
                     var locale = doc.GetString(RodriBusKeys.Locale);
                     var pathStart = Locales.GetPath(locale);
                     if (!string.IsNullOrEmpty(pathStart)) path = $"{pathStart}/{path}";

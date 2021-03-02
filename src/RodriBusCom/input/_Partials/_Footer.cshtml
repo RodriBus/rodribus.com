@@ -1,19 +1,17 @@
-﻿@{ var info = Outputs
-                      .FromPipeline(nameof(RodriBusCom.Pipelines.LoadGeneralInformationEs))
-                      //.SelectMany(group => group.GetChildren())
-                      .Where(model => model.IsContentful<GeneralInformation>())
-                      .Select(model => model.AsContentful<GeneralInformation>())
-                      .First()
-                      ; }
+﻿@{
+    var author = ViewData["Author"] as Author;
+}
 
 <footer class="text-center">
     <div class="container">
-        <p><strong class="big">Diego Rodríguez Suárez-Bustillo</strong></p>
+        <p><strong class="big">@author.Name</strong></p>
         <div class="text-center">
-            <a href="https://github.com/RodriBus" target="_blank" title="title"><i class="fa fa-github-square fa-lg"></i></a>
-            <a href="https://www.linkedin.com/in/rodribus" target="_blank" title="title"><i class="fa fa-linkedin-square fa-lg"></i></a>
+            @foreach (var link in author.Contacts)
+            {
+                <a href="@link.Url" target="_blank" title="@link.Name"><i class="fa @Html.Raw($"{link.Icon}-square") fa-lg"></i></a>
+            }
         </div>
-        <p>Soto Del Real • Madrid<br />2016-@DateTime.Now.Year</p>
-        <p><a class="mail-link mail-full" target="_blank"></a></p>
+        <p>2016 - @DateTime.Now.Year</p>
+        <p><a class="mail-link mail-full"></a></p>
     </div>
 </footer>

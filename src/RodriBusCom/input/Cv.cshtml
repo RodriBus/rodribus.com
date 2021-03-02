@@ -1,51 +1,49 @@
-﻿@{
-    var educations = Outputs
-        .FromPipeline(nameof(RodriBusCom.Pipelines.LoadEducationsEs))
-        .Where(model => model.IsContentful<Education>())
-        .Select(model => model.AsContentful<Education>())
-        .OrderByDescending(model => model.StartDate)
-        ;
-    var aptitudes = Outputs
-        .FromPipeline(nameof(RodriBusCom.Pipelines.LoadAptitudesEs))
-        .Where(model => model.IsContentful<Aptitude>())
-        .Select(model => model.AsContentful<Aptitude>())
-        ;
-    var knowledges = Outputs
-        .FromPipeline(nameof(RodriBusCom.Pipelines.LoadKnowledgesEs))
-        .Where(model => model.IsContentful<Knowledge>())
-        .Select(model => model.AsContentful<Knowledge>())
-        ;
-    var skills = knowledges
-        .Where(k => !k.ShowAsOtherKnowledge)
-        .OrderBy(k => k.Priority).ThenBy(k => k.Title)
-        ;
-    var others = knowledges
-        .Where(k => !k.ShowAsOtherKnowledge)
-        .OrderBy(k => k.Priority).ThenBy(k => k.Title)
-        ;
-    var experiences = Outputs
-        .FromPipeline(nameof(RodriBusCom.Pipelines.LoadExperiencesEs))
-        .Where(model => model.IsContentful<Experience>())
-        .Select(model => model.AsContentful<Experience>())
-        .OrderByDescending(model => model.EndDate)
-        ;
-}
+﻿---
+Excluded: true
+---
+@model PageViewModel
+@{
+    ViewData["CurrentPage"] = Model.Page;
+    ViewData["SiteMetadata"] = Model.Metadata;
+    ViewData["Author"] = Model.Author;
+    ViewData["Navigation"] = Model.Navigation;
+    ViewData["lang"] = Model.Locale;
+    ViewData["Localizer"] = Model.Localizer;
+    if (Model.Page.Title != null)
+    {
+        ViewBag.Title = $"{Model.Page.Title} - {Model.Metadata.Title}";
+    }
+    var alternateLocale = RodriBusCom.Locales.GetAlternate(Model.Locale);
+    var altLangPath = "/" + RodriBusCom.Locales.GetPath(alternateLocale);
 
-@*@Html.Partial("../_partials/_member-small-card.cshtml", knowledge)*@
+    var cv = Model.Navigation.Resume as Page;
+    var portfolio = Model.Navigation.Portfolio as Page;
+
+    var educations = Model.Page.Content.OfType<Education>();
+    var aptitudes = Model.Page.Content.OfType<Aptitude>();
+    var knowledges = Model.Page.Content.OfType<Knowledge>();
+    var skills = knowledges.Where(k => !k.ShowAsOtherKnowledge)
+        .OrderBy(k => k.Priority);
+    var others = knowledges.Where(k => k.ShowAsOtherKnowledge)
+        .OrderBy(k => k.Priority);
+    var experiences = Model.Page.Content.OfType<Experience>()
+        .OrderByDescending(e => e.StartDate)
+        .ThenByDescending(e => e.EndDate);
+}
 
 <div class="bg-white">
     <div class="container">
         <div class="row text-center">
             <h1 class="section-title">
-                <span class="i-block">CURRÍCULUM<i class="line"></i></span>
+                <span class="i-block">@Model.GetString("Resume").ToUpper()<i class="line"></i></span>
             </h1>
             <h2 class="section-title color-gray submenu">
                 <span>
-                    <a class="scroll" href="#formación" title="">Formación</a>
+                    <a class="scroll" href="#@Model.GetString("Resume_Submenu_Education").ToLower()" title="">@Model.GetString("Resume_Submenu_Education")</a>
                     <span class="hidden-xs">·</span>
-                    <a class="scroll" href="#aptitudes" title="">Aptitudes</a>
+                    <a class="scroll" href="#@Model.GetString("Resume_Submenu_Skills").ToLower()" title="">@Model.GetString("Resume_Submenu_Skills")</a>
                     <span class="hidden-xs">·</span>
-                    <a class="scroll" href="#experiencia" title="">Experiencia</a>
+                    <a class="scroll" href="#@Model.GetString("Resume_Submenu_Experience").ToLower()" title="">@Model.GetString("Resume_Submenu_Experience")</a>
                 </span>
             </h2>
         </div>
@@ -54,8 +52,8 @@
 <div class="bg-white">
     <div class="container">
         <article class="row">
-            <h3 class="section-title text-center" id="formación">
-                <span class="i-block">Formación<i class="line"></i></span>
+            <h3 class="section-title text-center" id="@Model.GetString("Resume_Submenu_Education").ToLower()">
+                <span class="i-block">@Model.GetString("Resume_Education_Title")<i class="line"></i></span>
             </h3>
             @foreach (var education in educations)
             {
@@ -64,7 +62,7 @@
                 var dateRange = sameYear ? education.StartDate.Year.ToString()
                     : hasEnd
                     ? education.StartDate.Year + "-" + education.EndDate.Year
-                    : education.StartDate.Year + "- Actualidad";
+                    : education.StartDate.Year + "- " + Model.GetString("To_This_Day");
 
                 <div class="row formation">
                     <div class="col-md-1 col-md-offset-3 col-sm-2 col-xs-2 text-right"><span class="label label-default">@dateRange</span></div>
@@ -74,7 +72,7 @@
                         </div>
                         @if (education.HonorableMention)
                         {
-                            <div class="text-center i-block val-top"><span class="fa fa-trophy fa-3x pull-left" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="¡Mención de Honor!"></span></div>
+                            <div class="text-center i-block val-top"><span class="fa fa-trophy fa-3x pull-left" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="@Model.GetString("Honorific_Mention_Mark")"></span></div>
                         }
                     </div>
                 </div>
@@ -85,8 +83,8 @@
 <div class="bg-white">
     <div class="container">
         <article class="row text-center">
-            <h3 class="section-title" id="aptitudes">
-                <span class="i-block">Conocimientos y aptitudes<i class="line"></i></span>
+            <h3 class="section-title" id="@Model.GetString("Resume_Submenu_Skills").ToLower()">
+                <span class="i-block">@Model.GetString("Resume_Skills_Title")<i class="line"></i></span>
             </h3>
             <div class="row text-left">
                 <div class="col-md-6">
@@ -112,7 +110,7 @@
 </div>
 <article class="container text-center">
     <h4>
-        <div class="i-block voffset4">Otros conocimientos<i class="line"></i></div>
+        <div class="i-block voffset4">@Model.GetString("Resume_Skills_OTher_Title")<i class="line"></i></div>
     </h4>
     @foreach (var other in others)
     {
@@ -123,8 +121,8 @@
     <div class="container">
         <article class="row">
             <div class="text-center">
-                <h3 class="section-title" id="experiencia">
-                    <span class="i-block">Experiencia<i class="line"></i></span>
+                <h3 class="section-title" id="@Model.GetString("Resume_Submenu_Experience").ToLower()">
+                    <span class="i-block">@Model.GetString("Resume_Experience_Title")<i class="line"></i></span>
                 </h3>
 
                 @foreach (var experience in experiences)
@@ -134,8 +132,8 @@
                     var sameYear = experience.StartDate.Year == experience.EndDate.Year;
                     var dateRange = sameYear ? experience.StartDate.Year.ToString()
                         : hasEnd
-                        ? experience.StartDate.Year + "-" + experience.EndDate.Year
-                        : experience.StartDate.Year + "- Actualidad";
+                        ? experience.StartDate.Year + " - " + experience.EndDate.Year
+                        : experience.StartDate.Year + " - " + Model.GetString("To_This_Day");
                     <div class="row text-left">
                         <div class="col-md-1 col-md-offset-3 col-sm-2 col-xs-2 text-right"><span class="label label-default">@dateRange</span></div>
                         <div class="col-md-5 col-sm-10 col-xs-10">

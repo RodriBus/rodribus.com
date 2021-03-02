@@ -4,7 +4,6 @@
 });
 
 var email = 'mailto:';
-//var charArr = [109, 97, 105, 108, 116, 111, 58, 100, 105, 101, 103, 111, 64, 114, 111, 100, 114, 105, 98, 117, 115, 46, 99, 111, 109];
 for (var i = 0; i < charArr.length; i++) {
     email += String.fromCharCode(charArr[i]);
 }

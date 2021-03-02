@@ -1,36 +1,31 @@
-﻿@{
-    var portfolios = Outputs
-        .FromPipeline(nameof(RodriBusCom.Pipelines.LoadPortfolioEs))
-        //.SelectMany(group => group.GetChildren())
-        .Where(model => model.IsContentful<Portfolio>())
-        .Select(model => model.AsContentful<Portfolio>())
+﻿---
+Excluded: true
+---
+@model PageViewModel
+@{
+    ViewData["CurrentPage"] = Model.Page;
+    ViewData["SiteMetadata"] = Model.Metadata;
+    ViewData["Author"] = Model.Author;
+    ViewData["Navigation"] = Model.Navigation;
+    ViewData["lang"] = Model.Locale;
+    ViewData["Localizer"] = Model.Localizer;
+    if (Model.Page.Title != null)
+    {
+        ViewBag.Title = $"{Model.Page.Title} - {Model.Metadata.Title}";
+    }
+    var alternateLocale = RodriBusCom.Locales.GetAlternate(Model.Locale);
+    var altLangPath = "/" + RodriBusCom.Locales.GetPath(alternateLocale);
+
+    var portfolios = Model.Page.Content.OfType<Portfolio>()
         .GroupBy(model => model.Year.Year)
-        .OrderByDescending(group => group.Key)
-;
-    var locales = Outputs
-    .FromPipeline(nameof(RodriBusCom.Pipelines.LoadPortfolioEs))
-    .Select(d => d.Get<string>("Locale"));
-    @foreach (var g in locales)
-    {
-        <script>
-            console.log("@g");
-        </script>
-    }
-
-    var jsons = new List<string>();
-    foreach (var g in Outputs.FromPipeline(nameof(RodriBusCom.Pipelines.LoadPortfolioEs)))
-    {
-        jsons.Add(await g.GetContentStringAsync());
-    }
-
+        .OrderByDescending(group => group.Key);
 }
-<script>models = [@Html.Raw(string.Join(",",jsons))]</script>
 
 <div class="bg-white">
     <div class="container">
         <div class="row text-center">
             <h1 class="section-title">
-                <span class="i-block">PORTFOLIO<i class="line"></i></span>
+                <span class="i-block">@Model.GetString("Resume").ToUpper()<i class="line"></i></span>
             </h1>
         </div>
     </div>

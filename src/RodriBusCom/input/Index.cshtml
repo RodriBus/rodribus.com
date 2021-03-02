@@ -1,30 +1,55 @@
-﻿@{
+﻿Excluded: true
+---
+@model HomeViewModel
+@{
     Layout = "Shared/_Layout-Landing";
+    ViewData["SiteMetadata"] = Model.Metadata;
+    ViewData["Author"] = Model.Author;
+    ViewData["Navigation"] = Model.Navigation;
+    ViewData["lang"] = Model.Locale;
+    ViewData["Localizer"] = Model.Localizer;
+    if (Model.Page.Title != null)
+    {
+        ViewBag.Title = $"{Model.Page.Title} - {Model.Metadata.Title}";
+    }
+    var alternateLocale = RodriBusCom.Locales.GetAlternate(Model.Locale);
+    var altLangPath = "/" + RodriBusCom.Locales.GetPath(alternateLocale);
+
+    var cv = Model.Navigation.Resume as Page;
+    var portfolio = Model.Navigation.Portfolio as Page;
 }
 <div class="bg-white">
     <div class="container">
         <div class="row text-center">
             <div class="jumbotron rounded">
                 <h1 class="section-title" style="margin-bottom: 0">
-                    <span class="i-block">DIEGO RODRÍGUEZ<i class="line"></i></span>
+                    <span class="i-block">@Model.Author.ShortName.ToUpper()<i class="line"></i></span>
                 </h1>
                 <h2 style="margin: 0">
-                    <span class="i-block">Web Developer</span>
+                    <span class="i-block">@Model.Author.JobTitle</span>
                 </h2>
                 <h3 class="section-title color-gray submenu">
                     <span>
-                        <a href="/cv.html" data-toggle="tooltip" data-placement="bottom" title="Datos de interés">Currículum</a>
+                        <a href="@IExecutionContext.Current.GetLink($"{cv.GetLocalizedSlug()}.html")"
+                           data-toggle="tooltip" data-placement="bottom" title="@cv.LinkTitle">@cv.Title</a>
                         <span class="hidden-xs">·</span>
-                        <a href="/portfolio.html" data-toggle="tooltip" data-placement="bottom" title="Trabajos realizados">Portfolio</a>
+                        <a href="@IExecutionContext.Current.GetLink($"{portfolio.GetLocalizedSlug()}.html")"
+                           data-toggle="tooltip" data-placement="bottom"
+                           title="@portfolio.LinkTitle">@portfolio.Title</a>
                     </span>
                 </h3>
                 <div class="text-center">
-                    <a href="https://github.com/RodriBus" target="_blank" title="Perfil en GitHub"><i class="fa fa-github-square fa-3x"></i></a>
-                    <a href="https://www.linkedin.com/in/rodribus" target="_blank" title="Perfil en LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
-                    <a class="mail-link" target="_blank" href="" title="Email"><i class="fa fa-envelope-square fa-3x"></i></a>
+                    @foreach (var contact in Model.Metadata.Author.Contacts)
+                    {
+                        <a href="@contact.Url" target="_blank" rel="noreferrer noopener" title="@contact.Name">
+                            <i class="fa @Html.Raw($"{contact.Icon}-square") fa-3x"></i>
+                        </a>
+                    }
+                    <a class="mail-link" title="Email"><i class="fa fa-envelope-square fa-3x"></i></a>
                 </div>
                 <div class="text-center">
-                    <a target="_self" href="" data-toggle="tooltip" data-placement="bottom" title="Go to english version"><i class="fa fa-globe fa-2x"></i></a>
+                    <a target="_self" href="@IExecutionContext.Current.GetLink(altLangPath)" data-toggle="tooltip"
+                       data-placement="bottom" title="@Model.Localizer.GetString("Go_To_Alt_Ver")"><i class="fa fa-globe fa-2x"></i></a>
                 </div>
             </div>
         </div>

@@ -1,5 +1,8 @@
-﻿<!DOCTYPE html>
-<html lang="es">
+﻿@{
+    var lang = (string) ViewData["lang"];
+}
+<!DOCTYPE html>
+<html lang="@lang">
 
 <head>
     @Html.Partial("_Partials/_head")
