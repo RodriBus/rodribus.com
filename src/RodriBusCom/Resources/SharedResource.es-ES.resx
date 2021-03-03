@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="Go_To_Alt_Ver" xml:space="preserve">
     <value>Go to English version</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Resume_Submenu_Skills" xml:space="preserve">
     <value>Aptitudes</value>
+  </data>
+  <data name="Toggle_Nav" xml:space="preserve">
+    <value>Alternar navegación</value>
   </data>
   <data name="To_This_Day" xml:space="preserve">
     <value>Actualidad</value>

@@ -1,4 +1,5 @@
 ﻿@{
+    var pageInfo = ViewData["CurrentPage"] as Page;
     var metadata = ViewData["SiteMetadata"] as SiteMetadata;
     var author = ViewData["Author"] as Author;
     var nav = ViewData["Navigation"] as Navigation;
@@ -11,13 +12,27 @@
 
 <base href="@GlobalSettings.SiteOptions.BaseRef" />
 
-@if (string.IsNullOrEmpty(metadata.Title))
+@if (string.IsNullOrEmpty(pageInfo.Title))
 {
-    <title>@GlobalSettings.SiteOptions.Title</title>
+    if (string.IsNullOrEmpty(metadata.Title))
+    {
+        <title>@GlobalSettings.SiteOptions.Title</title>
+    }
+    else
+    {
+        <title>@metadata.Title</title>
+    }
 }
 else
 {
-    <title>@metadata.Title - @GlobalSettings.SiteOptions.Title</title>
+    if (string.IsNullOrEmpty(metadata.Title))
+    {
+        <title>@pageInfo.Title - @GlobalSettings.SiteOptions.Title</title>
+    }
+    else
+    {
+        <title>@pageInfo.Title - @metadata.Title</title>
+    }
 }
 
 @if (string.IsNullOrEmpty(metadata.Description))

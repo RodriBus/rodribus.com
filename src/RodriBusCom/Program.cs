@@ -28,6 +28,7 @@ namespace RodriBusCom
                 cfg.AddUserSecrets<Program>();
             })
             .ConfigureServices((services, settings) => {
+                var v = Config.FromSetting<string>("REPO_OWNER");
                 services.AddSiteOptions((IConfiguration) settings);
                 services.AddContentful((IConfiguration) settings, new EntityResolver());
 
@@ -38,8 +39,12 @@ namespace RodriBusCom
             .AddPipelines()
             .AddCommands()
             .DisablePipeline(nameof(Statiq.Web.Pipelines.Sitemap))
-            .DisablePipeline(nameof(Statiq.Web.Pipelines.Feeds))
-            .DisablePipeline(nameof(Statiq.Web.Pipelines.Content))
+            .DeployToGitHubPagesBranch(
+                Config.FromSetting<string>("REPO_OWNER"),
+                Config.FromSetting<string>("REPO_NAME"),
+                Config.FromSetting<string>("GITHUB_TOKEN"),
+                Config.FromSetting<string>("REPO_BRANCH")
+            )
             .RunAsync();
     }
 }

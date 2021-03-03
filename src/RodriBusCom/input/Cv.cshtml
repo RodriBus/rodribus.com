@@ -23,12 +23,12 @@ Excluded: true
     var aptitudes = Model.Page.Content.OfType<Aptitude>();
     var knowledges = Model.Page.Content.OfType<Knowledge>();
     var skills = knowledges.Where(k => !k.ShowAsOtherKnowledge)
-        .OrderBy(k => k.Priority);
+            .OrderBy(k => k.Priority);
     var others = knowledges.Where(k => k.ShowAsOtherKnowledge)
-        .OrderBy(k => k.Priority);
+            .OrderBy(k => k.Priority);
     var experiences = Model.Page.Content.OfType<Experience>()
-        .OrderByDescending(e => e.StartDate)
-        .ThenByDescending(e => e.EndDate);
+            .OrderByDescending(e => e.StartDate)
+            .ThenByDescending(e => e.EndDate);
 }
 
 <div class="bg-white">
@@ -39,11 +39,14 @@ Excluded: true
             </h1>
             <h2 class="section-title color-gray submenu">
                 <span>
-                    <a class="scroll" href="#@Model.GetString("Resume_Submenu_Education").ToLower()" title="">@Model.GetString("Resume_Submenu_Education")</a>
+                    <a class="scroll" href="#@Model.GetString("Resume_Submenu_Education").ToLower()"
+                       title="">@Model.GetString("Resume_Submenu_Education")</a>
                     <span class="hidden-xs">·</span>
-                    <a class="scroll" href="#@Model.GetString("Resume_Submenu_Skills").ToLower()" title="">@Model.GetString("Resume_Submenu_Skills")</a>
+                    <a class="scroll" href="#@Model.GetString("Resume_Submenu_Skills").ToLower()"
+                       title="">@Model.GetString("Resume_Submenu_Skills")</a>
                     <span class="hidden-xs">·</span>
-                    <a class="scroll" href="#@Model.GetString("Resume_Submenu_Experience").ToLower()" title="">@Model.GetString("Resume_Submenu_Experience")</a>
+                    <a class="scroll" href="#@Model.GetString("Resume_Submenu_Experience").ToLower()"
+                       title="">@Model.GetString("Resume_Submenu_Experience")</a>
                 </span>
             </h2>
         </div>
@@ -60,19 +63,32 @@ Excluded: true
                 var hasEnd = education.EndDate != default;
                 var sameYear = education.StartDate.Year == education.EndDate.Year;
                 var dateRange = sameYear ? education.StartDate.Year.ToString()
-                    : hasEnd
-                    ? education.StartDate.Year + "-" + education.EndDate.Year
-                    : education.StartDate.Year + "- " + Model.GetString("To_This_Day");
+                : hasEnd
+                ? education.StartDate.Year + " - " + education.EndDate.Year
+                : education.StartDate.Year + " - " + Model.GetString("To_This_Day");
 
                 <div class="row formation">
-                    <div class="col-md-1 col-md-offset-3 col-sm-2 col-xs-2 text-right"><span class="label label-default">@dateRange</span></div>
+                    <div class="col-md-1 col-md-offset-3 col-sm-2 col-xs-2 text-right">
+                        <span class="label label-default">@dateRange</span>
+                    </div>
                     <div class="col-md-5 col-sm-9 col-xs-9">
                         <div class="formation-title i-block">
-                            <p><strong>@education.Title</strong><br>@education.School,<span class="small">@education.SchoolLocation</span><br>@Html.Raw(await education.RenderAdditionalInformationAsync())</p>
+                            <p>
+                                <strong>@education.Title</strong><br>
+                                @education.School,<span class="small">@education.SchoolLocation</span>
+                                @if (!(education.AdditionalInformation is null))
+                                {
+                                    <br>@Html.Raw(await education.RenderAdditionalInformationAsync())
+                                }
+                            </p>
                         </div>
                         @if (education.HonorableMention)
                         {
-                            <div class="text-center i-block val-top"><span class="fa fa-trophy fa-3x pull-left" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="@Model.GetString("Honorific_Mention_Mark")"></span></div>
+                            <div class="text-center i-block val-top">
+                                <span class="fa fa-trophy fa-3x pull-left"
+                                      data-toggle="tooltip" data-placement="bottom" title=""
+                                      data-original-title="@Model.GetString("Honorific_Mention_Mark")"></span>
+                            </div>
                         }
                     </div>
                 </div>
@@ -99,8 +115,15 @@ Excluded: true
                     @foreach (var apt in aptitudes)
                     {
                         <div class="media skill">
-                            <div class="media-left"><span class="fa-stack pic color-blue pull-left"><i class="fa fa-square fa-stack-2x"></i><i class="fa @apt.Icon fa-stack-1x fa-inverse color-white"></i></span></div>
-                            <div class="media-body cap"><strong>@apt.Title</strong><br>@Html.Raw(await apt.RenderDescriptionAsync())</div>
+                            <div class="media-left">
+                                <span class="fa-stack pic color-blue pull-left">
+                                    <i class="fa fa-square fa-stack-2x"></i><i class="fa @apt.Icon fa-stack-1x fa-inverse color-white"></i>
+                                </span>
+                            </div>
+                            <div class="media-body cap">
+                                <strong>@apt.Title</strong><br>@Html.Raw(await
+apt.RenderDescriptionAsync())
+                            </div>
                         </div>
                     }
                 </div>
@@ -131,21 +154,23 @@ Excluded: true
                     var hasEnd = experience.EndDate != default;
                     var sameYear = experience.StartDate.Year == experience.EndDate.Year;
                     var dateRange = sameYear ? experience.StartDate.Year.ToString()
-                        : hasEnd
-                        ? experience.StartDate.Year + " - " + experience.EndDate.Year
-                        : experience.StartDate.Year + " - " + Model.GetString("To_This_Day");
+                : hasEnd
+                ? experience.StartDate.Year + " - " + experience.EndDate.Year
+                : experience.StartDate.Year + " - " + Model.GetString("To_This_Day");
                     <div class="row text-left">
-                        <div class="col-md-1 col-md-offset-3 col-sm-2 col-xs-2 text-right"><span class="label label-default">@dateRange</span></div>
+                        <div class="col-md-1 col-md-offset-3 col-sm-2 col-xs-2 text-right">
+                            <span class="label label-default">@dateRange</span>
+                        </div>
                         <div class="col-md-5 col-sm-10 col-xs-10">
                             <div class="i-block">
                                 <p>
-                                    <span class="big"><strong>@experience.Company</strong></span>
-                                    <br>
-                                    <span class="small">@experience.Location</span>
-                                    <br>
+                                    <span class="big"><strong>@experience.Company</strong></span><br>
+                                    <span class="small">@experience.Location</span><br>
                                     <span class="big">@experience.JobTitle</span>
-                                    <br>
-                                    @Html.Raw(await experience.RenderJobDescriptionAsync())
+                                    @if (!(experience.JobDescription is null))
+                                    {
+                                        <br>@Html.Raw(await experience.RenderJobDescriptionAsync())
+                                    }
                                 </p>
                             </div>
                         </div>

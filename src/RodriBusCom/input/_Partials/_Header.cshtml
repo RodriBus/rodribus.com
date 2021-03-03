@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row" id="bio">
             <div class="col-md-2 hidden-sm hidden-xs text-center">
-                <a href="/" title="title">
+                <a href="/" title="@author.Name">
                     <div class="biopic"></div>
                 </a>
             </div>
@@ -14,7 +14,7 @@
                 @Html.Raw(await author.RenderBioAsync())
             </div>
             <div class="col-sm-12 col-xs-12 hidden-lg hidden-md text-center">
-                <a href="/" title="title">
+                <a href="/" title="@author.Name">
                     <div class="biopic"></div>
                 </a>
             </div>

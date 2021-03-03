@@ -3,15 +3,14 @@
 @model HomeViewModel
 @{
     Layout = "Shared/_Layout-Landing";
+    ViewData["CurrentPage"] = Model.Page;
     ViewData["SiteMetadata"] = Model.Metadata;
     ViewData["Author"] = Model.Author;
     ViewData["Navigation"] = Model.Navigation;
     ViewData["lang"] = Model.Locale;
     ViewData["Localizer"] = Model.Localizer;
-    if (Model.Page.Title != null)
-    {
-        ViewBag.Title = $"{Model.Page.Title} - {Model.Metadata.Title}";
-    }
+    var ctx = IExecutionContext.Current;
+
     var alternateLocale = RodriBusCom.Locales.GetAlternate(Model.Locale);
     var altLangPath = "/" + RodriBusCom.Locales.GetPath(alternateLocale);
 
@@ -30,10 +29,10 @@
                 </h2>
                 <h3 class="section-title color-gray submenu">
                     <span>
-                        <a href="@IExecutionContext.Current.GetLink($"{cv.GetLocalizedSlug()}.html")"
+                        <a href="@ctx.GetLink($"{cv.GetLocalizedSlug()}.html")"
                            data-toggle="tooltip" data-placement="bottom" title="@cv.LinkTitle">@cv.Title</a>
                         <span class="hidden-xs">·</span>
-                        <a href="@IExecutionContext.Current.GetLink($"{portfolio.GetLocalizedSlug()}.html")"
+                        <a href="@ctx.GetLink($"{portfolio.GetLocalizedSlug()}.html")"
                            data-toggle="tooltip" data-placement="bottom"
                            title="@portfolio.LinkTitle">@portfolio.Title</a>
                     </span>
@@ -45,11 +44,13 @@
                             <i class="fa @Html.Raw($"{contact.Icon}-square") fa-3x"></i>
                         </a>
                     }
-                    <a class="mail-link" title="Email"><i class="fa fa-envelope-square fa-3x"></i></a>
+                    <a class="mail-link" title="@Model.Localizer.GetString("Email")"><i class="fa fa-envelope-square fa-3x"></i></a>
                 </div>
                 <div class="text-center">
-                    <a target="_self" href="@IExecutionContext.Current.GetLink(altLangPath)" data-toggle="tooltip"
-                       data-placement="bottom" title="@Model.Localizer.GetString("Go_To_Alt_Ver")"><i class="fa fa-globe fa-2x"></i></a>
+                    <a target="_self" href="@ctx.GetLink(altLangPath)" data-toggle="tooltip"
+                       data-placement="bottom" title="@Model.Localizer.GetString("Go_To_Alt_Ver")">
+                        <i class="fa fa-globe fa-2x"></i>
+                    </a>
                 </div>
             </div>
         </div>

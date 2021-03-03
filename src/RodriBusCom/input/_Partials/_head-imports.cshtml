@@ -1,12 +1,13 @@
 ﻿@{
     var author = ViewData["Author"] as Author;
+    var ctx = IExecutionContext.Current;
 }
 <link rel="preconnect" href="//bootstrapcdn.com">
 <link rel="preconnect" href="//googleapis.com">
 <link rel="preconnect" href="//rawgit.com">
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="/assets/scss/main.css" />
+<link rel="stylesheet" type="text/css" href="@ctx.GetLink("/assets/scss/main.css")" />
 <style>
     .biopic {
         background: url(@author.BioPic.File.Url) no-repeat top !important;
