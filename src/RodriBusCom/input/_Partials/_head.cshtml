@@ -29,6 +29,10 @@ else
     {
         <title>@pageInfo.Title - @GlobalSettings.SiteOptions.Title</title>
     }
+    else if (pageInfo.Title == metadata.Title)
+    {
+        <title>@pageInfo.Title</title>
+    }
     else
     {
         <title>@pageInfo.Title - @metadata.Title</title>
