@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.14.0" />
+    <PackageReference Include="Contentful.Statiq" Version="1.0.0-alpha.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
     <PackageReference Include="Statiq.Web" Version="1.0.0-beta.24" />
@@ -30,17 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Contentful.Statiq\src\Contentful.Statiq\Contentful.Statiq.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="input\assets\img\" />
     <Folder Include="input\Views\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\SharedResource.es-ES.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>
