@@ -24,6 +24,7 @@ namespace RodriBusCom
             //        new NormalizedPath("**/*.cshtml")
             //    })
             .BuildConfiguration(cfg => {
+                cfg.AddCommandLine(args);
                 cfg.AddEnvironmentVariables();
                 cfg.AddJsonFile("appsettings.json", optional: false);
                 cfg.AddUserSecrets<Program>();
