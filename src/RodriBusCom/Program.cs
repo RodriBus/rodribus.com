@@ -24,6 +24,9 @@ namespace RodriBusCom
             })
             .ConfigureServices((services, settings) => {
                 System.Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(settings));
+                foreach (var c in (settings as IConfiguration).AsEnumerable()) {
+                    System.Console.WriteLine(c.Key + " = " + c.Value);
+                }
                 services.AddSiteOptions((IConfiguration) settings);
                 services.AddContentful((IConfiguration) settings, new EntityResolver());
 
