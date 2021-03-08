@@ -25,7 +25,6 @@ namespace RodriBusCom
             .ConfigureServices((services, settings) => {
                 services.AddSiteOptions((IConfiguration) settings);
                 services.AddContentful((IConfiguration) settings, new EntityResolver());
-
                 services.ConfigureGobalSettings();
                 services.AddLocalization();
             })

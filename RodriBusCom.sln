@@ -5,7 +5,13 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RodriBusCom", "src\RodriBusCom\RodriBusCom.csproj", "{D8764EC0-B2D2-4406-91A8-9DE6D85E9350}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contentful.Statiq", "..\Contentful.Statiq\src\Contentful.Statiq\Contentful.Statiq.csproj", "{C2165F03-09C9-43A6-A277-1A1131903878}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2192B5A7-0B6C-4D1E-8D2A-6B12579A018B}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		.azure\deploy.yml = .azure\deploy.yml
+		LICENSE = LICENSE
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +29,6 @@ Global
 		{D8764EC0-B2D2-4406-91A8-9DE6D85E9350}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D8764EC0-B2D2-4406-91A8-9DE6D85E9350}.Release|x64.ActiveCfg = Release|Any CPU
 		{D8764EC0-B2D2-4406-91A8-9DE6D85E9350}.Release|x64.Build.0 = Release|Any CPU
-		{C2165F03-09C9-43A6-A277-1A1131903878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2165F03-09C9-43A6-A277-1A1131903878}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2165F03-09C9-43A6-A277-1A1131903878}.Debug|x64.ActiveCfg = Debug|x64
-		{C2165F03-09C9-43A6-A277-1A1131903878}.Debug|x64.Build.0 = Debug|x64
-		{C2165F03-09C9-43A6-A277-1A1131903878}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2165F03-09C9-43A6-A277-1A1131903878}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2165F03-09C9-43A6-A277-1A1131903878}.Release|x64.ActiveCfg = Release|x64
-		{C2165F03-09C9-43A6-A277-1A1131903878}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -32,6 +32,5 @@
 
   <ItemGroup>
     <Folder Include="input\assets\img\" />
-    <Folder Include="input\Views\" />
   </ItemGroup>
 </Project>

@@ -63,8 +63,8 @@ namespace RodriBusCom.Pipelines
             };
 
             OutputModules = new ModuleList {
-                new ExecuteIf(Config.FromSetting(RodriBusKeys.BeautifyPages, true), new BeautifyHtml())
-                    .ElseIf(Config.FromSetting(RodriBusKeys.MinifyPages, true),new MinifyHtml()),
+                new ExecuteIf(Config.FromSetting(RodriBusKeys.MinifyPages, true), new MinifyHtml())
+                    .Else(new BeautifyHtml()),
                 new WriteFiles(),
             };
         }
