@@ -17,9 +17,9 @@ namespace RodriBusCom
             .Factory
             .CreateWeb(args)
             .BuildConfiguration(cfg => {
-                cfg.AddCommandLine(args);
-                cfg.AddEnvironmentVariables();
                 cfg.AddJsonFile("appsettings.json", optional: false);
+                cfg.AddEnvironmentVariables();
+                cfg.AddCommandLine(args);
                 cfg.AddUserSecrets<Program>();
             })
             .ConfigureServices((services, settings) => {
