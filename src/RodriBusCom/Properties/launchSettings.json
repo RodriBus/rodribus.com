@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Generator": {
+      "commandName": "Project",
+      "commandLineArgs": "preview"
+    },
+    "Deploy": {
+      "commandName": "Project",
+      "commandLineArgs": "deploy"
+    }
+  }
+}

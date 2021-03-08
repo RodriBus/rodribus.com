@@ -1,0 +1,51 @@
+﻿@{
+    var pageInfo = ViewData["CurrentPage"] as Page;
+    var metadata = ViewData["SiteMetadata"] as SiteMetadata;
+    var author = ViewData["Author"] as Author;
+    var nav = ViewData["Navigation"] as Navigation;
+}
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="author" content="@author.Name (rodribus.com)">
+<meta name="copyright" content="@author.Name" />
+
+@if (string.IsNullOrEmpty(pageInfo.Title))
+{
+    if (string.IsNullOrEmpty(metadata.Title))
+    {
+        <title>@GlobalSettings.SiteOptions.Title</title>
+    }
+    else
+    {
+        <title>@metadata.Title</title>
+    }
+}
+else
+{
+    if (string.IsNullOrEmpty(metadata.Title))
+    {
+        <title>@pageInfo.Title - @GlobalSettings.SiteOptions.Title</title>
+    }
+    else if (pageInfo.Title == metadata.Title)
+    {
+        <title>@pageInfo.Title</title>
+    }
+    else
+    {
+        <title>@pageInfo.Title - @metadata.Title</title>
+    }
+}
+
+@if (string.IsNullOrEmpty(metadata.Description))
+{
+    <meta name="description" content="@GlobalSettings.SiteOptions.Description">
+}
+else
+{
+    <meta name="description" content="@metadata.Description">
+}
+@Html.Partial("_Partials/_favicons")
+
+@Html.Partial("_Partials/_head-imports")

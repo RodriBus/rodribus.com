@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RunWorkingDirectory>$(MSBuildProjectDirectory)</RunWorkingDirectory>
+    <DefaultItemExcludes>$(DefaultItemExcludes);output\**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="0.14.0" />
+    <PackageReference Include="Contentful.Statiq" Version="1.0.0-alpha.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Statiq.Web" Version="1.0.0-beta.24" />
+    <PackageReference Include="Tinify" Version="1.5.2" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <UserSecretsId>6B380957-54C4-48A9-A506-0C8DAA7C57A9</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="input\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="input\**">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="input\assets\img\" />
+  </ItemGroup>
+</Project>

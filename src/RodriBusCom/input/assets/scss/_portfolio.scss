@@ -1,0 +1,27 @@
+/***********PORTFOLIO************/
+
+.cover {
+    margin-bottom: 10px;
+    opacity: 1;
+    img {
+        max-height: 50px;
+    }
+    &:hover {
+        opacity: 8;
+    }
+}
+
+.portfolio-desc {
+    margin-bottom: 10px;
+}
+
+.label-spaced {
+    margin: auto 2px;
+}
+
+.btn-source {
+    background-color: $white;
+    color: $purple;
+    border-color: fadeout($gray, 30%);
+    ;
+}

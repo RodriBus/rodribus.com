@@ -1,0 +1,13 @@
+﻿@{
+    var author = ViewData["Author"] as Author;
+    var ctx = IExecutionContext.Current;
+}
+
+<script>charArr = [@Html.Raw(string.Join(", ", System.Text.Encoding.ASCII.GetBytes(author.Email).Select(b => b))) ];</script>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//cdn.rawgit.com/garand/sticky/master/jquery.sticky.js"></script>
+<script type="text/javascript" src="@ctx.GetLink("/assets/js/email-handler.js")"></script>
+<script type="text/javascript" src="@ctx.GetLink("/assets/js/isOnScreen.js")"></script>
+<script type="text/javascript" src="@ctx.GetLink("/assets/js/index.js")"></script>

@@ -1,0 +1,17 @@
+﻿@{
+    var lang = (string) ViewData["lang"];
+}
+<!DOCTYPE html>
+<html lang="@lang">
+
+<head>
+    @Html.Partial("_Partials/_head")
+</head>
+
+<body>
+    <main class="home">
+        @RenderBody()
+    </main>
+    @Html.Partial("_Partials/_scripts")
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿@{
+    var author = ViewData["Author"] as Author;
+}
+
+<footer class="text-center">
+    <div class="container">
+        <p><strong class="big">@author.Name</strong></p>
+        <div class="text-center">
+            @foreach (var link in author.Contacts)
+            {
+                <a href="@link.Url" target="_blank" title="@link.Name"><i class="fa @Html.Raw($"{link.Icon}-square") fa-lg"></i></a>
+            }
+        </div>
+        <p>2016 - @DateTime.Now.Year</p>
+        <p><a class="mail-link mail-full"></a></p>
+    </div>
+</footer>
