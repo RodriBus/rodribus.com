@@ -16,13 +16,6 @@ namespace RodriBusCom
           await Bootstrapper
             .Factory
             .CreateWeb(args)
-            // .AddSetting(WebKeys.ContentType, "Asset")
-            // .AddSetting(WebKeys.Excluded, "*.cshtml")
-            // .AddSetting(WebKeys.ExcludedPaths,
-            //    new List<NormalizedPath>
-            //    {
-            //        new NormalizedPath("**/*.cshtml")
-            //    })
             .BuildConfiguration(cfg => {
                 cfg.AddCommandLine(args);
                 cfg.AddEnvironmentVariables();
@@ -30,7 +23,7 @@ namespace RodriBusCom
                 cfg.AddUserSecrets<Program>();
             })
             .ConfigureServices((services, settings) => {
-                var v = Config.FromSetting<string>("REPO_OWNER");
+                System.Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(settings));
                 services.AddSiteOptions((IConfiguration) settings);
                 services.AddContentful((IConfiguration) settings, new EntityResolver());
 
