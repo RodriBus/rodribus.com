@@ -1,0 +1,58 @@
+﻿Excluded: true
+---
+@model HomeViewModel
+@{
+    Layout = "Shared/_Layout-Landing";
+    ViewData["CurrentPage"] = Model.Page;
+    ViewData["SiteMetadata"] = Model.Metadata;
+    ViewData["Author"] = Model.Author;
+    ViewData["Navigation"] = Model.Navigation;
+    ViewData["lang"] = Model.Locale;
+    ViewData["Localizer"] = Model.Localizer;
+    var ctx = IExecutionContext.Current;
+
+    var alternateLocale = RodriBusCom.Locales.GetAlternate(Model.Locale);
+    var altLangPath = "/" + RodriBusCom.Locales.GetPath(alternateLocale);
+
+    var cv = Model.Navigation.Resume as Page;
+    var portfolio = Model.Navigation.Portfolio as Page;
+}
+<div class="bg-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="jumbotron rounded">
+                <h1 class="section-title" style="margin-bottom: 0">
+                    <span class="i-block">@Model.Author.ShortName.ToUpper()<i class="line"></i></span>
+                </h1>
+                <h2 style="margin: 0">
+                    <span class="i-block">@Model.Author.JobTitle</span>
+                </h2>
+                <h3 class="section-title color-gray submenu">
+                    <span>
+                        <a href="@ctx.GetLink($"{cv.GetLocalizedSlug()}.html")"
+                           data-toggle="tooltip" data-placement="bottom" title="@cv.LinkTitle">@cv.Title</a>
+                        <span class="hidden-xs">·</span>
+                        <a href="@ctx.GetLink($"{portfolio.GetLocalizedSlug()}.html")"
+                           data-toggle="tooltip" data-placement="bottom"
+                           title="@portfolio.LinkTitle">@portfolio.Title</a>
+                    </span>
+                </h3>
+                <div class="text-center">
+                    @foreach (var contact in Model.Metadata.Author.Contacts)
+                    {
+                        <a href="@contact.Url" target="_blank" rel="noreferrer noopener" title="@contact.Name">
+                            <i class="fa @Html.Raw($"{contact.Icon}-square") fa-3x"></i>
+                        </a>
+                    }
+                    <a class="mail-link" title="@Model.Localizer.GetString("Email")"><i class="fa fa-envelope-square fa-3x"></i></a>
+                </div>
+                <div class="text-center">
+                    <a target="_self" href="@ctx.GetLink(altLangPath)" data-toggle="tooltip"
+                       data-placement="bottom" title="@Model.Localizer.GetString("Go_To_Alt_Ver")">
+                        <i class="fa fa-globe fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
