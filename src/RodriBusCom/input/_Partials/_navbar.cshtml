@@ -14,7 +14,7 @@
         .Last(p => p.Sys.Id == current.Sys.Id && p.Sys.Locale != current.Sys.Locale);
 
     var alternateLocale = RodriBusCom.Locales.GetAlternate(current.Sys.Locale);
-    var altLangPath = ctx.GetLink(System.IO.Path.Combine(RodriBusCom.Locales.GetPath(alternateLocale), alternatePage.Slug));
+    var altLangPath = ctx.GetLink(System.IO.Path.Combine(RodriBusCom.Locales.GetPath(alternateLocale), alternatePage.Slug + ".html"));
 }
 <nav class="navbar">
     <div class="dark contanier" id="sticky-menu">
